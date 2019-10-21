@@ -1,3 +1,4 @@
+
 console.log(`yup`);
 
 // -------------------- SELECTORS
@@ -24,3 +25,8 @@ $submit = $(`#submit`);
 $logout = $(`#logout`);
 
 // EVENT LISTENERS
+
+form.addEventListener(`submit`, (event) => {
+  event.preventDefault();
+  console.log(`a form was submitted`)
+})
