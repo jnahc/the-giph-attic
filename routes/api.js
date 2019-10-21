@@ -8,10 +8,11 @@ const ctlr = require('../controllers');
 router.post('/signup', ctlr.auth.createUser);
 router.post('/login', ctlr.auth.createSession);
 router.get('/verify', ctlr.auth.verifyAuth);
+router.delete('/logout', ctlr.auth.deleteSession);
 
 //--------------Profile-------------//
 // add userId later
-router.get('/profile', ctlr.auth.showProfile);
+router.get('/profile/:userId', ctlr.auth.showProfile);
 
 
 
