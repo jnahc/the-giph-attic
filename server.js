@@ -1,12 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const session = require('express-session');
+const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 
 //Routes
-// const routes = require('./routes');
+const routes = require('./routes');
 
 
 //-----------------------------MIDDLEWARE-----------------------//
@@ -19,20 +19,20 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 // session set up
-// app.use(session({
-//     secret: 'YOU SHALL NOT PASS',
-//     resave: false,
-//     saveUninitialized: false,
-// }));
+app.use(session({
+    secret: 'YOU SHALL NOT PASS',
+    resave: false,
+    saveUninitialized: false,
+}));
 
 //-----------------------------END POINTS---------------------//
 
 //HTML routes
-// app.use('/', routes.views);
+app.use('/', routes.views);
 
 
 // API routes
-// app.use('/api/v1', routes.api);
+app.use('/api/v1', routes.api);
 
 
 //------------------------START SERVER-----------------------//
