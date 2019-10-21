@@ -1,3 +1,4 @@
+
 console.log(`yup`);
 
 // -------------------- SELECTORS
@@ -24,3 +25,23 @@ $submit = $(`#submit`);
 $logout = $(`#logout`);
 
 // EVENT LISTENERS
+
+// form.addEventListener(`submit`, (event) => {
+//   event.preventDefault();
+//   console.log(`a form was submitted`);
+// });
+
+$signup.addEventListener(`click`, (event) => {
+  event.preventDefault();
+  console.log(`signup was clicked`);
+});
+
+$login.addEventListener(`click`, (event) => {
+  event.preventDefault();
+  console.log(`login button clicked`);
+});
+
+$logout.addEventListener(`click`, (event) => {
+  event.preventDefault();
+  console.log(`logout button clicked`);
+});
