@@ -6,22 +6,28 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="../../public/styles/style.css">
-  <title>Document</title>
+  <title>Profile | meme-attic</title>
 </head>
 <body>
-
+<!-- TOP NAV SECTION  -->
     <nav class="navbar navbar-light bg-light">
       <span class="navbar-brand mb-0 h1 mx-auto">Project 1</span>
+      <button class="btn btn-outline-success" type="button" id="logout">Logout</button>
     </nav>
+<!-- END TOP NAV       -->
     <main class="container text-center mt-4">
+      <!-- WELCOME USER SECTION  -->
       <nav class="navbar navbar-light bg-light">
         <header class="container">
           <span class="navbar-brand mb-0 mx-auto">Welcome, User!</span>
-          <button class="btn btn-outline-success" type="button">Logout</button>
         </header>
       </nav>   
+      <!-- END WELCOME USER -->
+      <!-- MAIN CONTENT SECTION  -->
       <content class="d-flex flex-row justify-content-around">
+        <!-- FIRST COLUMN SECTION  -->
         <div d-flex flex-column>
+          <!-- START FIRST COLUMN HEADER -->
           <div class="card" style="width: 18rem;">
             <div class="card-header">
               Topic 1
@@ -85,29 +91,39 @@
             </div>
           </div>
         </div>
+        <!-- END FIRST COLUMN  -->
+        <!-- START SECOND COLUMN SECTION  -->
         <div d-flex flex-column>
           <div>
+            <!-- START SECOND HEADER  -->
             <div class="card" style="width: 18rem;">
               <div class="card-header">
                 Topic 2
               </div>
+              <!-- END SECOND HEADER -->
             </div>
           </div>
           <div>2</div>
           <div>2</div>
         </div>
+        <!-- END SECOND COLUMN   -->
+        <!-- START THIRD COLUMN SECTION -->
         <div d-flex flex-column>
           <div>
+            <!-- START THIRD HEADER  -->
             <div class="card" style="width: 18rem;">
               <div class="card-header">
                 Favorites
               </div>
             </div>
+            <!-- END THIRD HEADER  -->
           </div>
           <div>3</div>
           <div>3</div>
         </div>
+        <!-- END THIRD COLUMN  -->
       </content>
+      <!-- END MAIN CONTENT  -->
     </main>
 
     <nav class="navbar fixed-bottom navbar-light bg-light d-flex justify-content-around">
