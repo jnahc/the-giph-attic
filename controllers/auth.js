@@ -49,3 +49,96 @@ const createUser = (req, res) => {
         });
     });
 };
+
+
+// POST login 
+const createSession = (req, res) => {
+    console.log('Request session object -->', req.session);
+    db.User.findOne({ email: req.body.email }, (error, foundUser) => {
+        if (error) return res.status(500).json({
+            status: 500,
+            error: [{ message: 'Something went wrong, please try again...'}]
+        });
+
+        if (!foundUser) return res.status(400).json({
+            status: 400,
+            error: [{ message: 'Username or password in incorrect...'}]
+        });
+
+        bcrypt.compare(req.body.password, foundUser.password, (error, isMatch) => {
+            if (error) return res.status(500).json({
+                status: 500,
+                error: [{ message: 'Something went wrong, please try again...'}]
+            });
+
+            if (isMatch) {
+                req.session.currentUser = foundUser._id;
+                return res.status(201).json({
+                    status: 201,
+                    data: { id: foundUser._id },
+                });
+            } else {
+                return res.status(400).json({
+                    status: 400,
+                    error: [{ message: 'Username or password in incorrect' }]
+                });
+            };
+        });
+    });
+};
+
+// DELETE logout 
+const deleteSession = (req, res) => {
+    req.session.destroy(error => {
+        if (error) return res.status(500).json({
+            status: 500,
+            error: [{ message: 'Something went wrong, please try again...'}]});
+
+        res.status(200).json({
+            status: 200,
+            message: 'Success',
+        });
+    });
+};
+
+// POST verify auth
+const verifyAuth = (req, res) => {
+    if (!req.session.currentUser) {
+        return res.status(401).json({
+            status: 401,
+            error: [{ message: 'Unauthorized, please login and try again...'}]
+        });
+    }
+
+    res.status(200).json({
+        status: 200,
+        user: req.session.currentUser,
+    });
+};
+
+
+
+// GET show profile
+const showProfile = (req, res) => {
+    db.User.findById(req.params.userId, (error, foundProfile) => {
+        if (error) return res.status(500).json({
+            status: 500,
+            error: [{ message: 'Something went wrong, please try again'}]
+        });
+
+        res.status(200).json({
+            status: 200,
+            data: foundProfile,
+        });
+    });
+};
+
+
+
+module.exports = {
+    createUser: createUser,
+    createSession: createSession,
+    deleteSession: deleteSession,
+    verifyAuth: verifyAuth,
+    showProfile: showProfile,
+};
