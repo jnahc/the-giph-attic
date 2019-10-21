@@ -9,3 +9,8 @@ mongoose.connect(DB_URL, {
 })
     .then(() => console.log('MongoDB connected...'))
     .catch((error) => console.log(error));
+
+
+    module.exports = {
+        User: require('./User'),
+    }

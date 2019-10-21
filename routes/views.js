@@ -22,7 +22,7 @@ router.get('/signup', (req, res) => {
 // Get login
 router.get('/login', (req, res) => {
     res.sendFile('views/auth/login.html', {
-        root: `${_dirname}/../`
+        root: `${__dirname}/../`
     });
 });
 
@@ -30,7 +30,7 @@ router.get('/login', (req, res) => {
 // ---------------- PROFILE section---------//
 
 // GET user profile
-router.get('/profile/:userId', (req, res) => {
+router.get('/profile', (req, res) => {
     res.sendFile('views/profile/show.html', {
         root: `${__dirname}/../`
     });
