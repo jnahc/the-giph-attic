@@ -31,17 +31,17 @@ $logout = $(`#logout`);
 //   console.log(`a form was submitted`);
 // });
 
-$signup.addEventListener(`click`, (event) => {
-  event.preventDefault();
-  console.log(`signup was clicked`);
-});
+// $signup.addEventListener(`click`, (event) => {
+//   event.preventDefault();
+//   console.log(`signup was clicked`);
+// });
 
-$login.addEventListener(`click`, (event) => {
-  event.preventDefault();
-  console.log(`login button clicked`);
-});
+// $login.addEventListener(`click`, (event) => {
+//   event.preventDefault();
+//   console.log(`login button clicked`);
+// });
 
-$logout.addEventListener(`click`, (event) => {
-  event.preventDefault();
-  console.log(`logout button clicked`);
-});
+// $logout.addEventListener(`click`, (event) => {
+//   event.preventDefault();
+//   console.log(`logout button clicked`);
+// });
