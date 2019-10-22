@@ -15,5 +15,12 @@ router.delete('/logout', ctlr.auth.deleteSession);
 router.get('/profile/:userId', ctlr.auth.showProfile);
 
 
+// ----------- Favorites------------ //
+
+router.post(`/createfavorite`, ctlr.favorite.create);
+router.get(`/showfavorite`, ctlr.favorite.index);
+router.delete(`/deletefavorite/:giphId`, ctlr.favorite.destroy);
+
+
 
 module.exports = router;

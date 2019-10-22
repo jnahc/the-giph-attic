@@ -1,11 +1,46 @@
-// const db = require('../models');
+const db = require(`../models`);
+
+// GET INDEX
+const index = (req,res) => {
+  db.Favorite.find({}, (error, allFavorites) => {
+    if (error) return console.log(error);
+    res.json({
+      status: 200,
+      count: allFavorites,
+      dateRequested: new Date().toLocaleString(),
+    });
+  });
+} 
 
 
-// const create = (req, res) => {
-//     db.User.findById(req.params.profileId, (error, foundProfile) => {
-//         if (error) return res.status(500),json({
-//             status: 500,
-//             error: [{ message: 'Something went wrong, please try again'}]
-//         })
-//     })
-// }
+// POST FAVORITE ROUTE
+
+const create = (req,res) => {
+  db.Favorite.create(req.body, (error, newFavorite) => {
+    if (error) return console.log(error);
+    res.json({
+      status: 201,
+      count: 1,
+      data: newFavorite,
+      dateRequested: new Date().toLocaleString(),
+    });
+  });
+}
+
+const destroy = (req,res) => {
+  db.Favorite.findByIdAndDelete(req.params.giphId, (error, deletedGiph) => {
+    if (error) return console.log(error);
+    res.json({
+      status: 200,
+      count: 1,
+      data: deletedGiph,
+      dateRequested: new Date().toLocaleString()
+    })
+  })
+}
+
+module.exports = {
+  index,
+  create,
+  destroy
+}
