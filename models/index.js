@@ -13,4 +13,5 @@ mongoose.connect(DB_URL, {
 
     module.exports = {
         User: require('./User'),
+        Favorite: require(`./Favorite`)
     }

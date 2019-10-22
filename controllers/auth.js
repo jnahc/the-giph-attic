@@ -32,6 +32,8 @@ const createUser = (req, res) => {
                 const newUser = {
                     name: req.body.name,
                     email: req.body.email,
+                    topic: req.body.topic,
+                    topic2: req.body.topic2,
                     password: hash
                 };
 
