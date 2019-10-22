@@ -38,12 +38,24 @@ $(`form`).submit(`submit`, (event) => {
 
   let subscriberData = {
     "name": $fullname.val(),
-    
-
+    "email": $email.val(),
+    "password": $password.val(),
+    "topic": $favoritetopic.val(),
+    "topic2": $favoritetopic2.val(),
   }
+  
+  console.log(subscriberData);
 
-
-})
+  $.ajax({
+    method: `POST`,
+    url: `${apiUrl}`,
+    data: subscriberData,
+    success: console.log (`db entry success`),
+    error: (error) => {
+      console.log({error});
+    }
+  });
+});
 
 $signup.click(function(){
   console.log(`signup`);
