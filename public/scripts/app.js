@@ -38,6 +38,12 @@ $(`form`).submit(`submit`, (event) => {
 
   let subscriberData = {
     "name": $fullname.val(),
+    "email": $email.val(),
+    "password": $password.val(),
+    "topic": $favoritetopic.val(),
+    "topic2": $favoritetopic.val(),
+
+
     
 
   }
