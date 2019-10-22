@@ -31,12 +31,6 @@ $logout = $(`#logout`);
 //   console.log(`a form was submitted`);
 // });
 
-const onSignUpSuccess = (res) => {
-  console.log (`db entry success, login`)
-  console.log(res)
-  window.location = `/login`;
-}
-
 $(`form`).submit(`submit`, (event) => {
   event.preventDefault();
   // console.log(`submitted`)
@@ -56,7 +50,30 @@ $(`form`).submit(`submit`, (event) => {
     method: `POST`,
     url: `${apiUrl}`,
     data: subscriberData,
-    success: onSignUpSuccess,
+    success: console.log (`db entry success`),
+    error: (error) => {
+      console.log({error});
+    }
+  });
+});
+
+$('.heart').on('click', (event) => {
+  event.preventDefault();
+  const favortireUrl = `http://localhost:3000/api/v1/profile`
+
+  let favoriteData = {
+    "topic": String, 
+    "name": String,
+    "userId": String, 
+    "memeId": String, 
+    "url": String, 
+  }
+
+  $.ajax({
+    method: `POST`,
+    url: `${favortireUrl}`,
+    data: favoriteData,
+    success: console.log('favorite schema populated'),
     error: (error) => {
       console.log({error});
     }
