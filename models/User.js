@@ -7,14 +7,15 @@ const userSchema = new Schema({
     password: String,
     topic: String,
     topic2: String,
-    favorite: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Favorite',
-    }],
     signupDate: {
         type: String,
         default: Date.now,
     },
+    //referenced
+    favorite: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Favorite',
+    }],
 });
 
 const User = mongoose.model('User', userSchema);
