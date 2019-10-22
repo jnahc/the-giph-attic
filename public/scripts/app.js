@@ -31,6 +31,12 @@ $logout = $(`#logout`);
 //   console.log(`a form was submitted`);
 // });
 
+const onSignUpSuccess = (res) => {
+  console.log (`db entry success, login`)
+  console.log(res)
+  window.location = `/login`;
+}
+
 $(`form`).submit(`submit`, (event) => {
   event.preventDefault();
   // console.log(`submitted`)
@@ -50,7 +56,7 @@ $(`form`).submit(`submit`, (event) => {
     method: `POST`,
     url: `${apiUrl}`,
     data: subscriberData,
-    success: console.log (`db entry success`),
+    success: onSignUpSuccess,
     error: (error) => {
       console.log({error});
     }
