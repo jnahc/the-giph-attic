@@ -36,4 +36,10 @@ router.get('/profile/:userId', (req, res) => {
     });
 });
 
+
+router.get('/profile', (req, res) => {
+    res.sendFile('views/profile/show.html', {
+        root: `${__dirname}/../`
+    });
+});
 module.exports = router;
