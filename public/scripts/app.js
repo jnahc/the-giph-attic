@@ -40,8 +40,8 @@ $(`form`).submit(`submit`, (event) => {
     "name": $fullname.val(),
     "email": $email.val(),
     "password": $password.val(),
-    "keyword": $favoritetopic.val(),
-    "keywordsecond": $favoritetopic2.val(),
+    "topic": $favoritetopic.val(),
+    "topic2": $favoritetopic2.val(),
   }
   
   console.log(subscriberData);
