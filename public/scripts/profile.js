@@ -7,7 +7,7 @@ const onSuccess = (response) => {
     response.data.forEach((giphy)=>{
         const template = `
         <div class="card" style="width: 18rem;">
-            <img src="${giphy.images.downsized.url}" width="285" height="265"/>
+            <img id="${giphy.id}" src="${giphy.images.downsized.url}" width="285" height="265"/>
                 <div class="image-content">
                     <div class="icons">
                         <button class="icon fas fa-heart heart1"></button>
@@ -25,6 +25,7 @@ const onSuccess = (response) => {
         let url1 = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
         fave.push(url1);
         console.log(fave);
+        console.log(giphy);
     })
 }
 
@@ -93,3 +94,4 @@ topicTwo();
 
 
 
+"https://media2.giphy.com/media/3oEduVI94O3u3Q9ZXG/…e7293fc8f9be057c48cdd3ec230b3e178fd&rid=giphy.gif"
