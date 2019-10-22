@@ -31,17 +31,29 @@ $logout = $(`#logout`);
 //   console.log(`a form was submitted`);
 // });
 
-// $signup.addEventListener(`click`, (event) => {
-//   event.preventDefault();
-//   console.log(`signup was clicked`);
-// });
+$(`form`).submit(`submit`, (event) => {
+  event.preventDefault();
+  // console.log(`submitted`)
+  const apiUrl = `http://localhost:3000/api/v1/signup`
 
-// $login.addEventListener(`click`, (event) => {
-//   event.preventDefault();
-//   console.log(`login button clicked`);
-// });
+  let subscriberData = {
+    "name": $fullname.val(),
+    
 
-// $logout.addEventListener(`click`, (event) => {
-//   event.preventDefault();
-//   console.log(`logout button clicked`);
-// });
+  }
+
+
+})
+
+$signup.click(function(){
+  console.log(`signup`);
+});
+
+$login.click(function(){
+  console.log(`login`);
+});
+
+$logout.click(function(){
+  console.log(`logout`)
+})
+
