@@ -16,10 +16,33 @@ const onSuccess = (response) => {
         </div>
         `
         $('#topic-1-content').append(template);
+        
     })
 }
 
-const addGiph = () => {
+
+let count2 = 0
+const onSuccess2 = (response) => {
+    count2 += 26;
+    response.data.forEach((giphy)=>{
+        const template2 = `
+        <div class="card" style="width: 18rem;">
+            <img src="${giphy.images.downsized.url}" width="285" height="265"/>
+                <div class="image-content">
+                    <div class="icons">
+                        <a href="#" class="icon fas fa-heart"></a>
+                        <a href="#" class="icon fas fa-eye"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+        $('#topic-2-content').append(template2);
+    })
+}
+
+
+const topicOne = () => {
     // event.preventDefault();
     $('#topic-1-content').empty();
     $.ajax({
@@ -30,6 +53,18 @@ const addGiph = () => {
     });
 }
 
+const topicTwo = () => {
+    // event.preventDefault();
+    $('#topic-2-content').empty();
+    $.ajax({
+        method: "GET",
+        url: `https://api.giphy.com/v1/gifs/search?q=southpark&api_key=dc6zaTOxFJmzC`,
+        success: onSuccess2,
+        error: onError
+    });
+}
+
+
 
 function onError(xhr, status, errorThrown) {
 	alert("Sorry, there was a problem!");
@@ -38,6 +73,7 @@ function onError(xhr, status, errorThrown) {
 	console.dir(xhr);
 }
 
-addGiph();
+topicOne();
+topicTwo();
 
 
