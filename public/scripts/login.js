@@ -4,9 +4,10 @@ $submit = $(`#submit`);
 $email = $(`#email`);
 $password = $(`#password`);
 
+
 const onSuccess = (res) => {
   console.log(`login success`)
-  return window.location = `/profile/${res.data.id}`;  
+  window.location = `/profile/${res.data.id}`;
 }
 
 $(`form`).submit(`submit`, (event) => {
