@@ -8,8 +8,8 @@ const onSuccess = (response) => {
             <img src="${giphy.images.downsized.url}" width="285" height="265"/>
                 <div class="image-content">
                     <div class="icons">
-                        <a href="#" class="icon fas fa-heart"></a>
-                        <a href="#" class="icon fas fa-eye"></a>
+                        <button class="icon fas fa-heart heart1"></button>
+                        <button class="icon fas fa-eye"></button>
                     </div>
                 </div>
             </div>
@@ -17,6 +17,10 @@ const onSuccess = (response) => {
         `
         $('#topic-1-content').append(template);
         
+    })
+
+    $('.heart1').on('click', (event) =>{
+        console.log($(event.target).parent().parent().parent().find('img')[0].currentSrc);
     })
 }
 
@@ -30,14 +34,18 @@ const onSuccess2 = (response) => {
             <img src="${giphy.images.downsized.url}" width="285" height="265"/>
                 <div class="image-content">
                     <div class="icons">
-                        <a href="#" class="icon fas fa-heart"></a>
-                        <a href="#" class="icon fas fa-eye"></a>
+                        <button class="icon fas fa-heart heart2"></button>
+                        <button class="icon fas fa-eye"></button>
                     </div>
                 </div>
             </div>
         </div>
         `
         $('#topic-2-content').append(template2);
+    })
+
+    $('.heart2').on('click', (event) =>{
+        console.log($(event.target).parent().parent().parent().find('img')[0].currentSrc);
     })
 }
 
@@ -75,5 +83,7 @@ function onError(xhr, status, errorThrown) {
 
 topicOne();
 topicTwo();
+
+
 
 
