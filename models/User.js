@@ -5,12 +5,12 @@ const userSchema = new Schema({
     name: String,
     email: String,
     password: String,
-    keyword: String,
-    keywordsecond: String,
-    // favorite: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Favorite',
-    // }],
+    topic: String,
+    topic2: String,
+    favorite: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Favorite',
+    }],
     signupDate: {
         type: String,
         default: Date.now,
