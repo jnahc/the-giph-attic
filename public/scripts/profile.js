@@ -1,4 +1,6 @@
 
+
+let fave = [];
 let count = 0
 const onSuccess = (response) => {
     count += 26;
@@ -20,7 +22,9 @@ const onSuccess = (response) => {
     })
 
     $('.heart1').on('click', (event) =>{
-        console.log($(event.target).parent().parent().parent().find('img')[0].currentSrc);
+        let url1 = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+        fave.push(url1);
+        console.log(fave);
     })
 }
 
@@ -43,9 +47,11 @@ const onSuccess2 = (response) => {
         `
         $('#topic-2-content').append(template2);
     })
-
+    
     $('.heart2').on('click', (event) =>{
-        console.log($(event.target).parent().parent().parent().find('img')[0].currentSrc);
+        let url2 = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+        fave.push(url2);
+        console.log(fave)
     })
 }
 

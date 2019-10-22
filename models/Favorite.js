@@ -9,6 +9,6 @@ const favoriteSchema = new Schema({
     url: String,  
 });
 
-const Favorite = mongoose.model('Favortite', favoriteSchema);
+const Favorite = mongoose.model('Favorite', favoriteSchema);
 
 module.exports = Favorite;
