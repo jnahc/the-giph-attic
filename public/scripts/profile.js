@@ -5,6 +5,7 @@ let count = 0
 const onSuccess = (response) => {
     count += 26;
     response.data.forEach((giphy)=>{
+        console.log(giphy)
         const template = `
         <div class="card" style="width: 18rem;">
             <img src="${giphy.images.downsized.url}" width="285" height="265"/>
