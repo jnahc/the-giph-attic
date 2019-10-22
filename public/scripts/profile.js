@@ -1,11 +1,10 @@
 
 
-let fave = [];
+// let fave = [];
 let count = 0
 const onSuccess = (response) => {
     count += 26;
     response.data.forEach((giphy)=>{
-        console.log(giphy)
         const template = `
         <div class="card" style="width: 18rem;">
             <img id="${giphy.id}" src="${giphy.images.downsized.url}" width="285" height="265"/>
@@ -24,9 +23,10 @@ const onSuccess = (response) => {
 
     $('.heart1').on('click', (event) =>{
         let url1 = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
-        fave.push(url1);
-        console.log(fave);
-        console.log(giphy);
+        let giphId1 = $(event.target).parent().parent().parent().find('img')[0].id;
+        // fave.push(url1);
+        console.log(url1);
+        console.log(giphId1);
     })
 }
 
@@ -51,12 +51,34 @@ const onSuccess2 = (response) => {
     })
     
     $('.heart2').on('click', (event) =>{
-        let url2 = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
-        fave.push(url2);
-        console.log(fave)
+        let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+        let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
+        // fave.push(url1);
+        console.log(url);
+        console.log(giphId);
     })
 }
 
+
+$('.heart').on('click', (event) => {
+    event.preventDefault();
+    const favoriteUrl = `http://localhost:3000/api/v1/favorite`
+  
+    let favoriteData = {
+      "memeId": url, 
+      "url": giphId, 
+    }
+  
+    $.ajax({
+      method: `POST`,
+      url: `${favoriteUrl}`,
+      data: favoriteData,
+      success: console.log('favorite schema populated'),
+      error: (error) => {
+        console.log({error});
+      }
+    });
+  });
 
 const topicOne = () => {
     // event.preventDefault();

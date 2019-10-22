@@ -3,23 +3,6 @@ const bcrypt = require('bcryptjs');
 const db = require('../models');
 
 
-// // POST
-// const createFavorite = (req, res) => {
-//     db.Favorite.findOne({ topic: req.body.topic }, (error, foundFavorite) => {
-//         if (error) return res.status(500).json({
-//             status: 500,
-//             error: [{ message: "something went wrong, please try again..."}],
-//         });
-
-//         const newFave = {
-//                 topic: ,
-//                 name: ,
-//                 userId: , 
-//                 memeId: , 
-//                 url: , 
-//         }
-//     })
-// }
 
 // POST
 const createUser = (req, res) => {
