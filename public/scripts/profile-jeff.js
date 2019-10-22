@@ -20,3 +20,20 @@ $.ajax({
     console.log({error})
   }
 })
+
+const onLogoutSuccess = () => {
+  window.location = `/login`
+}
+
+$(`#logout`).click(`click`, (event) => {
+  event.preventDefault();
+  console.log(`logout clicked`);
+  $.ajax({
+    method: `DELETE`,
+    url: `http://localhost:3000/api/v1/logout`,
+    success: onLogoutSuccess,
+    error: (error) => {
+      console.log({error})
+    }
+  });
+});
