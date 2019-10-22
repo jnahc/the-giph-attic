@@ -26,7 +26,46 @@ $logout = $(`#logout`);
 
 // EVENT LISTENERS
 
-form.addEventListener(`submit`, (event) => {
+// form.addEventListener(`submit`, (event) => {
+//   event.preventDefault();
+//   console.log(`a form was submitted`);
+// });
+
+$(`form`).submit(`submit`, (event) => {
   event.preventDefault();
-  console.log(`a form was submitted`)
+  // console.log(`submitted`)
+  const apiUrl = `http://localhost:3000/api/v1/signup`
+
+  let subscriberData = {
+    "name": $fullname.val(),
+    "email": $email.val(),
+    "password": $password.val(),
+    "topic": $favoritetopic.val(),
+    "topic2": $favoritetopic2.val(),
+  }
+  
+  console.log(subscriberData);
+
+  $.ajax({
+    method: `POST`,
+    url: `${apiUrl}`,
+    data: subscriberData,
+    success: console.log (`db entry success`),
+    error: (error) => {
+      console.log({error});
+    }
+  });
+});
+
+$signup.click(function(){
+  console.log(`signup`);
+});
+
+$login.click(function(){
+  console.log(`login`);
+});
+
+$logout.click(function(){
+  console.log(`logout`)
 })
+

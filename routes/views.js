@@ -30,10 +30,16 @@ router.get('/login', (req, res) => {
 // ---------------- PROFILE section---------//
 
 // GET user profile
-router.get('/profile', (req, res) => {
+router.get('/profile/:userId', (req, res) => {
     res.sendFile('views/profile/show.html', {
         root: `${__dirname}/../`
     });
 });
 
+
+router.get('/profile', (req, res) => {
+    res.sendFile('views/profile/show.html', {
+        root: `${__dirname}/../`
+    });
+});
 module.exports = router;

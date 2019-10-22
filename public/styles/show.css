@@ -1,0 +1,68 @@
+.card {
+    position: relative;
+}
+
+.image-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 40%;
+    box-sizing: border-box;
+    z-index: 99;
+}
+
+img {
+    position: relative;
+    z-index: 2;
+}
+
+.icons {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    right: 0;
+    left: 0;
+}
+
+.icon {
+    text-decoration: none;
+    font-size: 6em;
+    margin: 0 10px;
+}
+
+.image-content:hover .fa-heart  {
+    color: red;
+    text-decoration: none;
+    transition: 0.4s;
+    filter: brightness(50%);
+}
+
+.image-content:hover .fa-eye {
+    color: yellow;
+    text-decoration: none;
+    transition: 0.4s;
+    filter: brightness(50%);
+}
+
+.icon:hover:nth-child(1) {
+    transition: 0.4s;
+    color: red;
+    filter: brightness(100%);
+}
+
+.icon:hover:nth-child(2) {
+    transition: 0.4s;
+    color: yellow;
+    filter: brightness(100%);
+}
+
+
+.fa-heart {
+    color: transparent;
+}
+
+.fa-eye {
+    color: transparent;
+}
