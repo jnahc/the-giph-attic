@@ -42,4 +42,18 @@ router.get('/profile', (req, res) => {
         root: `${__dirname}/../`
     });
 });
+
+
+// // ------ FAVORITE ROUTES
+
+// router.get (`/favorite`, (req,res) => {
+//     res.send
+// })
+
+
+
+
+
+
+
 module.exports = router;
