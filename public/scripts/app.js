@@ -57,6 +57,29 @@ $(`form`).submit(`submit`, (event) => {
   });
 });
 
+// $('.heart').on('click', (event) => {
+//   event.preventDefault();
+//   const favortireUrl = `http://localhost:3000/api/v1/profile`
+
+//   let favoriteData = {
+//     // "topic": String, 
+//     // "name": String,
+//     // "ring, userId": St
+//     "memeId": url1, 
+//     "url": giphId, 
+//   }
+
+//   $.ajax({
+//     method: `POST`,
+//     url: `${favortireUrl}`,
+//     data: favoriteData,
+//     success: console.log('favorite schema populated'),
+//     error: (error) => {
+//       console.log({error});
+//     }
+//   });
+// });
+
 $signup.click(function(){
   console.log(`signup`);
 });
