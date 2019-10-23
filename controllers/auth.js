@@ -57,7 +57,6 @@ const createUser = (req, res) => {
 
 // POST login 
 const createSession = (req, res) => {
-    console.log('Request session object -->', req.session);
     db.User.findOne({ email: req.body.email }, (error, foundUser) => {
         if (error) return res.status(500).json({
             status: 500,
@@ -134,6 +133,7 @@ const showProfile = (req, res) => {
             status: 200,
             data: foundProfile,
         });
+        console.log('Request session object -->', req.session);
     });
 };
 

@@ -13,7 +13,6 @@ const onWorking = (response)=>{
 
 topicOne();
 topicTwo();
-populateFavorites();
 }
 
 $.ajax({
@@ -42,8 +41,11 @@ $(`#logout`).click(`click`, (event) => {
   });
 });
 
-// end jeff code
 
+
+
+
+    
 // let fave = [];
 let count = 0
 const onSuccess = (response) => {
@@ -62,8 +64,12 @@ const onSuccess = (response) => {
         </div>
         `
         $('#topic-1-content').append(template);
+
         
     })
+
+ 
+       
 
     $('.heart1').on('click', (event) =>{
         console.log(`heart 1 clicked`)
@@ -79,12 +85,13 @@ const onSuccess = (response) => {
             </div>
         </div>
         `
-    // $('#favorite-content').append(template3);
+    $('#favorite-content').append(template3);
+    
 
-    const favoriteUrl = `http://localhost:3000/api/v1/createfavorite/${giphId}` // CAMEL CASE
+    const favoriteUrl = `http://localhost:3000/api/v1/createfavorite` // CAMEL CASE
   
     let favoriteData = {
-      "giphId": giphId, 
+      "memeId": giphId, 
       "url": url, 
       "userId": userId
     }
@@ -98,30 +105,31 @@ const onSuccess = (response) => {
         console.log({error});
       }
     });
-    // populateFavorites();
-    })
-   // ALI CODE
-   $('.eye1').on('click', (event) =>{
-    $('.modal-body').empty();
-    let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
-    let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
-    console.log(url);
-    console.log(giphId);
-   
-    const template5 = `
-    <div class="card" style="width: 18rem;">
-        <img id="${giphId}" src="${url}" width="485" height="465"/>
-    <div class="image-content">
-    </div>
-    </div>
-    </div>
-    `
 
-    $('.modal-body').append(template5);
-  });
-  //  ALI CODE END 
-
+    });
+// ALI CODE
+    $('.eye1').on('click', (event) =>{
+        $('.modal-body').empty();
+        let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+        let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
+        console.log(url);
+        console.log(giphId);
+       
+        const template5 = `
+        <div class="card" style="width: 18rem;">
+            <img id="${giphId}" src="${url}" width="485" height="465"/>
+        <div class="image-content">
+        </div>
+        </div>
+        </div>
+        `
+    
+        $('.modal-body').append(template5);
+      });
+      //  ALI CODE END
 }
+
+
 
 
 
@@ -158,50 +166,50 @@ const onSuccess2 = (response) => {
             </div>
         </div>
         `
-    // $('#favorite-content').append(template4);
+    $('#favorite-content').append(template4);
 
-    const createFavoriteUrl = `http://localhost:3000/api/v1/createfavorite/${giphId}` // CAMEL CASE
+    const favoriteUrl = `http://localhost:3000/api/v1/createfavorite` // CAMEL CASE
   
     let favoriteData = {
-      "giphId": giphId, 
+      "memeId": giphId, 
       "url": url, 
       "userId": userId,
     }
 
     $.ajax({
       method: `POST`,
-      url: `${createFavoriteUrl}`,
+      url: `${favoriteUrl}`,
       data: favoriteData,
       success: console.log('favorite schema populated'),
       error: (error) => {
         console.log({error});
       }
     });
-    // populateFavorites();
+
     })
-     // ALI CODE
-     $('.eye2').on('click', (event) =>{
-      $('.modal-body').empty();
-      let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
-      let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
-      console.log(url);
-      console.log(giphId);
-     
-      const template6 = `
-      <div class="card" style="width: 18rem;">
-          <img id="${giphId}" src="${url}" width="485" height="465"/>
-      <div class="image-content">
-      </div>
-      </div>
-      </div>
-      `
-  
-      $('.modal-body').append(template6);
-    //  END ALI CODE
-  });
+    // ALI CODE
+    $('.eye2').on('click', (event) =>{
+        $('.modal-body').empty();
+        let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+        let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
+        console.log(url);
+        console.log(giphId);
+       
+        const template6 = `
+        <div class="card" style="width: 18rem;">
+            <img id="${giphId}" src="${url}" width="485" height="465"/>
+        <div class="image-content">
+        </div>
+        </div>
+        </div>
+        `
+    
+        $('.modal-body').append(template6);
+      //  END ALI CODE
+    });
 }
 
-  
+
 
 
 const topicOne = () => {
@@ -228,32 +236,6 @@ const topicTwo = () => {
     });
 }
 
-const successCreatedFav = (response) => {
-  console.log(`response from success created fav`);
-  $(`#favorite-content`).empty();
-  response.data.forEach((favoritedGiphy) => {
-    const template = `
-    <div class="card" style="width: 18rem;">
-      <img id="${favoritedGiphy.giphId}" src="${favoritedGiphy.url}" width="285" height="265"/>
-      <div class="image-content">
-      </div>
-    </div>
-    `
-  $('#favorite-content').append(template);
-    
-  })
-}
-
-const populateFavorites = () => {
-  $.ajax({
-      method: `GET`,
-      url: `http://localhost:3000/api/v1/showfavorite/${userId}`,
-      success: successCreatedFav,
-      error: onError
-
-  });
-}
-
 
 
 function onError(xhr, status, errorThrown) {
@@ -262,7 +244,5 @@ function onError(xhr, status, errorThrown) {
 	console.log("Status: " + status);
 	console.dir(xhr);
 }
-
-
 
 

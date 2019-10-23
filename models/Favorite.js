@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const favoriteSchema = new Schema({
-    memeId: String, 
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    giphId: String, 
     url: String,  
 });
 
