@@ -108,6 +108,7 @@ const onSuccess2 = (response) => {
     })
     
     $('.heart2').on('click', (event) =>{
+        console.log(`heart 2 clicked`)
         let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
         // fave.push(url1);
@@ -132,12 +133,14 @@ const onSuccess2 = (response) => {
 
 $('.heart').on('click', (event) => {
     event.preventDefault();
+    console.log(`heart 1 clicked`)
     const favoriteUrl = `http://localhost:3000/api/v1/favorite`
   
     let favoriteData = {
       "memeId": url, 
       "url": giphId, 
     }
+
     $.ajax({
       method: `POST`,
       url: `${favoriteUrl}`,
