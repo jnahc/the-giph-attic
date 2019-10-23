@@ -64,10 +64,24 @@ const onSuccess = (response) => {
         
     })
 
+    // populate
+// app.get('/api/v1/user', (req, res) => {
+//   db.User.find({})
+//       .populate('Favorite')
+//       .exec((error, allUsers) => {
+//           if (error) return console.log(error);
+//           res.json({
+//               status: 200,
+//               count: allUsers.length,
+//               data: allUsers,
+//               requestedAt: new Date().toLocaleString()
+//           });
+//       })
+// });
+
     $('.heart1').on('click', (event) =>{
         let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
-        // fave.push(url1);
         console.log(url);
         console.log(giphId);
         const template3 = `
@@ -118,10 +132,7 @@ const onSuccess2 = (response) => {
         <div class="card" style="width: 18rem;">
             <img id="${giphId}" src="${url}" width="285" height="265"/>
                 <div class="image-content">
-                    <div class="icons">
-                        <button class="icon fas fa-heart heart2"></button>
-                        <button class="icon fas fa-eye"></button>
-                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -130,6 +141,10 @@ const onSuccess2 = (response) => {
     })
 }
 
+{/* <div class="icons">
+<button class="icon fas fa-heart heart2"></button>
+<button class="icon fas fa-eye"></button>
+</div> */}
 
 $('.heart').on('click', (event) => {
     event.preventDefault();
