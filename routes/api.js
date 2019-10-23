@@ -17,9 +17,9 @@ router.get('/profile/:userId', ctlr.auth.showProfile);
 
 // ----------- Favorites------------ //
 
-router.post(`/createfavorite/:giphId`, ctlr.favorite.create);
-router.get(`/showfavorite/:userId`, ctlr.favorite.index);
-router.delete(`/deletefavorite/:giphId`, ctlr.favorite.destroy);
+router.post(`/create-favorite/:giphId`, ctlr.favorite.create);
+router.get(`/show-favorite/:userId`, ctlr.favorite.index);
+router.delete(`/delete-favorite/:giphId`, ctlr.favorite.destroy);
 
 
 

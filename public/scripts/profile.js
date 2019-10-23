@@ -255,6 +255,14 @@ const populateFavorites = () => {
 }
 
 
+const removeFavorite = () => {
+  $.ajax({
+    method: `DELETE`,
+    url: `http://localhost:3000/api/v1/deletefavorite/${giphId}`,
+    success: 'destroyed favorite',
+    error: onError,
+  })
+}
 
 function onError(xhr, status, errorThrown) {
 	alert("Sorry, there was a problem!");
