@@ -80,6 +80,7 @@ const onSuccess = (response) => {
 // });
 
     $('.heart1').on('click', (event) =>{
+        console.log(`heart 1 clicked`)
         let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
         console.log(url);
@@ -88,15 +89,30 @@ const onSuccess = (response) => {
         <div class="card" style="width: 18rem;">
             <img id="${giphId}" src="${url}" width="285" height="265"/>
                 <div class="image-content">
-                    <div class="icons">
-                        <button class="icon fas fa-heart heart2"></button>
-                        <button class="icon fas fa-eye"></button>
-                    </div>
                 </div>
             </div>
         </div>
         `
     $('#favorite-content').append(template3);
+
+    const favoriteUrl = `http://localhost:3000/api/v1/createfavorite` // CAMEL CASE
+  
+    let favoriteData = {
+      "memeId": url, 
+      "url": giphId, 
+      "userId": userId
+    }
+
+    $.ajax({
+      method: `POST`,
+      url: `${favoriteUrl}`,
+      data: favoriteData,
+      success: console.log('favorite schema populated'),
+      error: (error) => {
+        console.log({error});
+      }
+    });
+
     })
 }
 
@@ -120,40 +136,29 @@ const onSuccess2 = (response) => {
         `
         $('#topic-2-content').append(template2);
     })
-    
+
     $('.heart2').on('click', (event) =>{
         console.log(`heart 2 clicked`)
         let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
-        // fave.push(url1);
         console.log(url);
         console.log(giphId);
         const template4 = `
         <div class="card" style="width: 18rem;">
             <img id="${giphId}" src="${url}" width="285" height="265"/>
                 <div class="image-content">
-                   
                 </div>
             </div>
         </div>
         `
     $('#favorite-content').append(template4);
-    })
-}
 
-{/* <div class="icons">
-<button class="icon fas fa-heart heart2"></button>
-<button class="icon fas fa-eye"></button>
-</div> */}
-
-$('.heart').on('click', (event) => {
-    event.preventDefault();
-    console.log(`heart 1 clicked`)
-    const favoriteUrl = `http://localhost:3000/api/v1/favorite`
+    const favoriteUrl = `http://localhost:3000/api/v1/createfavorite` // CAMEL CASE
   
     let favoriteData = {
       "memeId": url, 
       "url": giphId, 
+      "userId": userId
     }
 
     $.ajax({
@@ -165,7 +170,37 @@ $('.heart').on('click', (event) => {
         console.log({error});
       }
     });
-  });
+
+    })
+    
+}
+
+
+/* <div class="icons">
+<button class="icon fas fa-heart heart2"></button>
+<button class="icon fas fa-eye"></button>
+</div> */
+
+// $('.heart').on('click', (event) => {
+//     event.preventDefault();
+//     console.log(`heart 1 clicked`)
+//     // const favoriteUrl = `http://localhost:3000/api/v1/favorite`
+  
+//     // let favoriteData = {
+//     //   "memeId": url, 
+//     //   "url": giphId, 
+//     // }
+
+//     // $.ajax({
+//     //   method: `POST`,
+//     //   url: `${favoriteUrl}`,
+//     //   data: favoriteData,
+//     //   success: console.log('favorite schema populated'),
+//     //   error: (error) => {
+//     //     console.log({error});
+//     //   }
+//     // });
+//   });
 
   
 
