@@ -38,4 +38,3 @@ $(`#logout`).click(`click`, (event) => {
   });
 });
 
-// https://media3.giphy.com/media/PkLPBuyozY7F31wCxF/giphy.gif?cid=e1bb72ff30bc091b50a125cb0ebb8e34d82cb1e79949f33f&rid=giphy.gif
