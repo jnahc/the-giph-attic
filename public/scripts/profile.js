@@ -138,12 +138,10 @@ const onSuccess2 = (response) => {
         `
     $('#favorite-content').append(template4);
     })
+
 }
 
-{/* <div class="icons">
-<button class="icon fas fa-heart heart2"></button>
-<button class="icon fas fa-eye"></button>
-</div> */}
+
 
 $('.heart').on('click', (event) => {
     event.preventDefault();
@@ -152,6 +150,7 @@ $('.heart').on('click', (event) => {
     let favoriteData = {
       "memeId": url, 
       "url": giphId, 
+      "userId": userId,
     }
     $.ajax({
       method: `POST`,
