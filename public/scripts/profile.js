@@ -84,7 +84,7 @@ const onSuccess = (response) => {
         // `
     // $('#favorite-content').append(template3);
 
-    const favoriteUrl = `http://localhost:3000/api/v1/createfavorite/${giphId}` // CAMEL CASE
+    const favoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId}` // CAMEL CASE
   
     let favoriteData = {
       "giphId": giphId, 
@@ -166,7 +166,7 @@ const onSuccess2 = (response) => {
         // `
     // $('#favorite-content').append(template4);
 
-    const createFavoriteUrl = `http://localhost:3000/api/v1/createfavorite/${giphId}` // CAMEL CASE
+    const createFavoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId}` // CAMEL CASE
   
     let favoriteData = {
       "giphId": giphId, 
@@ -255,7 +255,7 @@ const successCreatedFav = (response) => {
 const populateFavorites = () => {
   $.ajax({
       method: `GET`,
-      url: `http://localhost:3000/api/v1/showfavorite/${userId}`,
+      url: `http://localhost:3000/api/v1/show-favorite/${userId}`,
       success: successCreatedFav,
       error: onError
 
@@ -266,7 +266,7 @@ const populateFavorites = () => {
 const removeFavorite = () => {
   $.ajax({
     method: `DELETE`,
-    url: `http://localhost:3000/api/v1/deletefavorite/${giphId}`,
+    url: `http://localhost:3000/api/v1/delete-favorite/${giphId}`,
     success: 'destroyed favorite',
     error: onError,
   })
