@@ -30,7 +30,7 @@ img {
     text-decoration: none;
     font-size: 6em;
     margin: 0 10px;
-}
+} 
 
 .image-content:hover .fa-heart  {
     color: red;
@@ -44,6 +44,15 @@ img {
     text-decoration: none;
     transition: 0.4s;
     filter: brightness(50%);
+}
+
+.image-content:hover .fa-times {
+    color: black;
+    text-decoration: none;
+    transition: 0.4s;
+    filter: brightness(50%);
+    font-size: 8em;
+
 }
 
 .icon:hover:nth-child(1) {
@@ -64,6 +73,10 @@ img {
 }
 
 .fa-eye {
+    color: transparent;
+}
+
+.fa-times {
     color: transparent;
 }
 
