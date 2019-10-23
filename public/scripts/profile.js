@@ -96,7 +96,7 @@ const onSuccess = (response) => {
         `
     $('#favorite-content').append(template3);
 
-    const favoriteUrl = `http://localhost:3000/api/v1/createfavorite` // CAMEL CASE
+    const favoriteUrl = `http://localhost:3000/api/v1/createfavorite/` // CAMEL CASE
   
     let favoriteData = {
       "memeId": giphId, 
@@ -113,7 +113,7 @@ const onSuccess = (response) => {
         console.log({error});
       }
     });
-    populateFavorites();
+    // populateFavorites();
 
     })
 }
@@ -155,7 +155,7 @@ const onSuccess2 = (response) => {
         `
     $('#favorite-content').append(template4);
 
-    const favoriteUrl = `http://localhost:3000/api/v1/createfavorite` // CAMEL CASE
+    const createFavoriteUrl = `http://localhost:3000/api/v1/createfavorite/` // CAMEL CASE
   
     let favoriteData = {
       "memeId": giphId, 
@@ -165,14 +165,14 @@ const onSuccess2 = (response) => {
 
     $.ajax({
       method: `POST`,
-      url: `${favoriteUrl}`,
+      url: `${createFavoriteUrl}`,
       data: favoriteData,
       success: console.log('favorite schema populated'),
       error: (error) => {
         console.log({error});
       }
     });
-    populateFavorites();
+    // populateFavorites();
     })
     
 }
@@ -232,7 +232,7 @@ const topicTwo = () => {
 }
 
 const successCreatedFav = (response) => {
-  console.log(`response from success created fav`, response);
+  console.log(`response from success created fav`);
   $(`#favorite-content`).empty();
   response.data.forEach((favoritedGiphy) => {
     const template = `
@@ -252,7 +252,7 @@ const populateFavorites = () => {
       method: `GET`,
       url: `http://localhost:3000/api/v1/showfavorite/${userId}`,
       success: successCreatedFav,
-      error: console.log(`error`)
+      error: onError
 
   });
 }
