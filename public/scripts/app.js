@@ -26,10 +26,10 @@ $logout = $(`#logout`);
 
 // EVENT LISTENERS
 
-// form.addEventListener(`submit`, (event) => {
-//   event.preventDefault();
-//   console.log(`a form was submitted`);
-// });
+const onSignUpSuccess = () => {
+  console.log(`sign up success`)
+  window.location = `/login`;
+}
 
 $(`form`).submit(`submit`, (event) => {
   event.preventDefault();
@@ -50,7 +50,7 @@ $(`form`).submit(`submit`, (event) => {
     method: `POST`,
     url: `${apiUrl}`,
     data: subscriberData,
-    success: console.log (`db entry success`),
+    success: onSignUpSuccess,
     error: (error) => {
       console.log({error});
     }
