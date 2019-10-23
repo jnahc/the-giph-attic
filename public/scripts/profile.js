@@ -10,6 +10,9 @@ const onWorking = (response)=>{
   $(`#topic-1-header`).append(`${response.data.topic}`)
   $(`#topic-2-header`).empty();
   $(`#topic-2-header`).append(`${response.data.topic2}`)
+
+topicOne();
+topicTwo();
 }
 
 $.ajax({
@@ -151,10 +154,12 @@ $('.heart').on('click', (event) => {
 
 const topicOne = () => {
     // event.preventDefault();
+    let topic1Header = $(`#topic-1-header`).text()
+    console.log(`https://api.giphy.com/v1/gifs/search?q=${topic1Header}&api_key=dc6zaTOxFJmzC`)
     $('#topic-1-content').empty();
     $.ajax({
         method: "GET",
-        url: `https://api.giphy.com/v1/gifs/search?q=${$(`#topic-1-header`).text()}&api_key=dc6zaTOxFJmzC`,
+        url: `https://api.giphy.com/v1/gifs/search?q=${topic1Header}&api_key=dc6zaTOxFJmzC`,
         success: onSuccess,
         error: onError
     });
@@ -180,7 +185,6 @@ function onError(xhr, status, errorThrown) {
 	console.dir(xhr);
 }
 
-topicOne();
-topicTwo();
+
 
 
