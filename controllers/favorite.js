@@ -2,13 +2,14 @@ const db = require(`../models`);
 
 // GET INDEX
 const index = (req,res) => {
-  db.Favorite.find({ userId: req.params._id }, (error, allFavorites) => {
+  db.Favorite.find({ userId: req.params.userId }, (error, allFavorites) => {
     console.log(allFavorites);
     if (error) return console.log(error);
     res.json({
       status: 200,
-      count: allFavorites,
+      count: allFavorites.length,
       dateRequested: new Date().toLocaleString(),
+      data: allFavorites,
     });
   });
 } 

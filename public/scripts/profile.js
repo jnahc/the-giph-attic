@@ -98,8 +98,8 @@ const onSuccess = (response) => {
     const favoriteUrl = `http://localhost:3000/api/v1/createfavorite` // CAMEL CASE
   
     let favoriteData = {
-      "memeId": url, 
-      "url": giphId, 
+      "memeId": giphId, 
+      "url": url, 
       "userId": userId
     }
 
@@ -156,8 +156,8 @@ const onSuccess2 = (response) => {
     const favoriteUrl = `http://localhost:3000/api/v1/createfavorite` // CAMEL CASE
   
     let favoriteData = {
-      "memeId": url, 
-      "url": giphId, 
+      "memeId": giphId, 
+      "url": url, 
       "userId": userId,
     }
 
