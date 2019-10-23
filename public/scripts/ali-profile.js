@@ -41,22 +41,11 @@ $(`#logout`).click(`click`, (event) => {
   });
 });
 
-// end jeff code
 
 
-const template5 = `
-<div class="card" style="width: 18rem;">
-    <img id="39xDerRCIoX2WeUVBz" src="https://media2.giphy.com/media/39xDerRCIoX2WeUVBz/giphy.gif?cid=e1bb72ff5ce4eaba16ac94ca77b9771fdac4157601ddc2d5&rid=giphy.gif" width="285" height="265"/>
-        <div class="image-content">
-        </div>
-    </div>
-</div>
-`
 
-$('button').on('click', () => {       
- $('.modal-body').append(template5);
-})
 
+    
 // let fave = [];
 let count = 0
 const onSuccess = (response) => {
@@ -68,31 +57,19 @@ const onSuccess = (response) => {
                 <div class="image-content">
                     <div class="icons">
                         <button class="icon fas fa-heart heart1"></button>
-                        <button class="icon fas fa-eye"></button>
+                        <button class="icon fas fa-eye eye1" data-toggle="modal" data-target="#exampleModalCenter"></button>
                     </div>
                 </div>
             </div>
         </div>
         `
         $('#topic-1-content').append(template);
+
         
     })
 
-    // populate
-// app.get('/api/v1/user', (req, res) => {
-//   db.User.find({})
-//       .populate('Favorite')
-//       .exec((error, allUsers) => {
-//           if (error) return console.log(error);
-//           res.json({
-//               status: 200,
-//               count: allUsers.length,
-//               data: allUsers,
-//               requestedAt: new Date().toLocaleString()
-//           });
-//       })
-// });
-    
+ 
+       
 
     $('.heart1').on('click', (event) =>{
         console.log(`heart 1 clicked`)
@@ -109,6 +86,7 @@ const onSuccess = (response) => {
         </div>
         `
     $('#favorite-content').append(template3);
+    
 
     const favoriteUrl = `http://localhost:3000/api/v1/createfavorite` // CAMEL CASE
   
@@ -128,8 +106,30 @@ const onSuccess = (response) => {
       }
     });
 
-    })
+    });
+
+    $('.eye1').on('click', (event) =>{
+        $('.modal-body').empty();
+        let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+        let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
+        console.log(url);
+        console.log(giphId);
+       
+        const template5 = `
+        <div class="card" style="width: 18rem;">
+            <img id="${giphId}" src="${url}" width="485" height="465"/>
+        <div class="image-content">
+        </div>
+        </div>
+        </div>
+        `
+    
+        $('.modal-body').append(template5);
+       
+    });
 }
+
+
 
 
 
@@ -143,7 +143,7 @@ const onSuccess2 = (response) => {
                 <div class="image-content">
                     <div class="icons">
                         <button class="icon fas fa-heart heart2"></button>
-                        <button class="icon fas fa-eye"></button>
+                        <button  class="icon fas fa-eye eye2" data-toggle="modal" data-target="#exampleModalCenter"></button>
                     </div>
                 </div>
             </div>
@@ -187,37 +187,28 @@ const onSuccess2 = (response) => {
     });
 
     })
+    $('.eye2').on('click', (event) =>{
+        $('.modal-body').empty();
+        let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+        let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
+        console.log(url);
+        console.log(giphId);
+       
+        const template6 = `
+        <div class="card" style="width: 18rem;">
+            <img id="${giphId}" src="${url}" width="485" height="465"/>
+        <div class="image-content">
+        </div>
+        </div>
+        </div>
+        `
     
+        $('.modal-body').append(template6);
+       
+    });
 }
 
 
-/* <div class="icons">
-<button class="icon fas fa-heart heart2"></button>
-<button class="icon fas fa-eye"></button>
-</div> */
-
-// $('.heart').on('click', (event) => {
-//     event.preventDefault();
-//     console.log(`heart 1 clicked`)
-//     // const favoriteUrl = `http://localhost:3000/api/v1/favorite`
-  
-//     // let favoriteData = {
-//     //   "memeId": url, 
-//     //   "url": giphId, 
-//     // }
-
-//     // $.ajax({
-//     //   method: `POST`,
-//     //   url: `${favoriteUrl}`,
-//     //   data: favoriteData,
-//     //   success: console.log('favorite schema populated'),
-//     //   error: (error) => {
-//     //     console.log({error});
-//     //   }
-//     // });
-//   });
-
-  
 
 
 const topicOne = () => {
