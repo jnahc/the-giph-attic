@@ -6,7 +6,7 @@ const favoriteSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    memeId: String, 
+    giphId: String, 
     url: String,  
 });
 
