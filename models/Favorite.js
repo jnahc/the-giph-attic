@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const favoriteSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: 'User'
     },
     memeId: String, 
     url: String,  

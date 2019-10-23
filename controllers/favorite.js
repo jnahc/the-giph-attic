@@ -2,7 +2,7 @@ const db = require(`../models`);
 
 // GET INDEX
 const index = (req,res) => {
-  db.Favorite.find({ userId: req.params._id}, (error, allFavorites) => {
+  db.Favorite.find({ userId: req.params._id }, (error, allFavorites) => {
     console.log(allFavorites);
     if (error) return console.log(error);
     res.json({
@@ -13,20 +13,7 @@ const index = (req,res) => {
   });
 } 
 
-// // populate
-// app.get('/api/v1/user', (req, res) => {
-//   db.User.find({})
-//       .populate('Favorite')
-//       .exec((error, allUsers) => {
-//           if (error) return console.log(error);
-//           res.json({
-//               status: 200,
-//               count: allUsers.length,
-//               data: allUsers,
-//               requestedAt: new Date().toLocaleString()
-//           });
-//       })
-// });
+
 
 // POST FAVORITE ROUTE
 

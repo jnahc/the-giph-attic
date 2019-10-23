@@ -158,7 +158,7 @@ const onSuccess2 = (response) => {
     let favoriteData = {
       "memeId": url, 
       "url": giphId, 
-      "userId": userId
+      "userId": userId,
     }
 
     $.ajax({
