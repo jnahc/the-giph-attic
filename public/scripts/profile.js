@@ -13,6 +13,7 @@ const onWorking = (response)=>{
 
 topicOne();
 topicTwo();
+populateFavorites();
 }
 
 $.ajax({
@@ -112,6 +113,7 @@ const onSuccess = (response) => {
         console.log({error});
       }
     });
+    populateFavorites();
 
     })
 }
@@ -170,7 +172,7 @@ const onSuccess2 = (response) => {
         console.log({error});
       }
     });
-
+    populateFavorites();
     })
     
 }
@@ -227,6 +229,32 @@ const topicTwo = () => {
         success: onSuccess2,
         error: onError
     });
+}
+
+const successCreatedFav = (response) => {
+  console.log(`response from success created fav`, response);
+  $(`#favorite-content`).empty();
+  response.data.forEach((favoritedGiphy) => {
+    const template = `
+    <div class="card" style="width: 18rem;">
+      <img id="${favoritedGiphy.memeId}" src="${favoritedGiphy.url}" width="285" height="265"/>
+      <div class="image-content">
+      </div>
+    </div>
+    `
+  $('#favorite-content').append(template);
+    
+  })
+}
+
+const populateFavorites = () => {
+  $.ajax({
+      method: `GET`,
+      url: `http://localhost:3000/api/v1/showfavorite/${userId}`,
+      success: successCreatedFav,
+      error: console.log(`error`)
+
+  });
 }
 
 
