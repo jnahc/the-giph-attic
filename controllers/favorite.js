@@ -27,7 +27,7 @@ const create = (req,res) => {
   });
 }
 
-const destroy = (req,res) => {
+const destroy = (req,res) => {g
   db.Favorite.findByIdAndDelete(req.params.giphId, (error, deletedGiph) => {
     if (error) return console.log(error);
     res.json({
