@@ -62,13 +62,27 @@ const onSuccess = (response) => {
     })
 
     $('.heart1').on('click', (event) =>{
-        let url1 = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
-        let giphId1 = $(event.target).parent().parent().parent().find('img')[0].id;
+        let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+        let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
         // fave.push(url1);
-        console.log(url1);
-        console.log(giphId1);
+        console.log(url);
+        console.log(giphId);
+        const template3 = `
+        <div class="card" style="width: 18rem;">
+            <img id="${giphId}" src="${url}" width="285" height="265"/>
+                <div class="image-content">
+                    <div class="icons">
+                        <button class="icon fas fa-heart heart2"></button>
+                        <button class="icon fas fa-eye"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+    $('#favorite-content').append(template3);
     })
 }
+
 
 
 let count2 = 0
@@ -77,7 +91,7 @@ const onSuccess2 = (response) => {
     response.data.forEach((giphy)=>{
         const template2 = `
         <div class="card" style="width: 18rem;">
-            <img src="${giphy.images.downsized.url}" width="285" height="265"/>
+            <img id="${giphy.id}" src="${giphy.images.downsized.url}" width="285" height="265"/>
                 <div class="image-content">
                     <div class="icons">
                         <button class="icon fas fa-heart heart2"></button>
@@ -96,6 +110,19 @@ const onSuccess2 = (response) => {
         // fave.push(url1);
         console.log(url);
         console.log(giphId);
+        const template4 = `
+        <div class="card" style="width: 18rem;">
+            <img id="${giphId}" src="${url}" width="285" height="265"/>
+                <div class="image-content">
+                    <div class="icons">
+                        <button class="icon fas fa-heart heart2"></button>
+                        <button class="icon fas fa-eye"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+    $('#favorite-content').append(template4);
     })
 }
 
@@ -108,7 +135,6 @@ $('.heart').on('click', (event) => {
       "memeId": url, 
       "url": giphId, 
     }
-  
     $.ajax({
       method: `POST`,
       url: `${favoriteUrl}`,
@@ -119,6 +145,9 @@ $('.heart').on('click', (event) => {
       }
     });
   });
+
+  
+
 
 const topicOne = () => {
     // event.preventDefault();

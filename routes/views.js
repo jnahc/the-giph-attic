@@ -46,12 +46,6 @@ router.get('/profile', (req, res) => {
 
 // // ------ FAVORITE ROUTES
 
-// router.get (`/favorite`, (req,res) => {
-//     res.send
-// })
-
-
-
 
 
 
