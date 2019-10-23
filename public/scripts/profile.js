@@ -55,7 +55,7 @@ const onSuccess = (response) => {
                 <div class="image-content">
                     <div class="icons">
                         <button class="icon fas fa-heart heart1"></button>
-                        <button class="icon fas fa-eye"></button>
+                        <button class="icon fas fa-eye eye1" data-toggle="modal" data-target="#exampleModalCenter"></button>
                     </div>
                 </div>
             </div>
@@ -114,8 +114,28 @@ const onSuccess = (response) => {
       }
     });
     // populateFavorites();
-
     })
+   // ALI CODE
+   $('.eye1').on('click', (event) =>{
+    $('.modal-body').empty();
+    let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+    let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
+    console.log(url);
+    console.log(giphId);
+   
+    const template5 = `
+    <div class="card" style="width: 18rem;">
+        <img id="${giphId}" src="${url}" width="485" height="465"/>
+    <div class="image-content">
+    </div>
+    </div>
+    </div>
+    `
+
+    $('.modal-body').append(template5);
+  });
+  //  ALI CODE END 
+
 }
 
 
@@ -130,7 +150,7 @@ const onSuccess2 = (response) => {
                 <div class="image-content">
                     <div class="icons">
                         <button class="icon fas fa-heart heart2"></button>
-                        <button class="icon fas fa-eye"></button>
+                        <button  class="icon fas fa-eye eye2" data-toggle="modal" data-target="#exampleModalCenter"></button>
                     </div>
                 </div>
             </div>
@@ -174,7 +194,26 @@ const onSuccess2 = (response) => {
     });
     // populateFavorites();
     })
-    
+     // ALI CODE
+     $('.eye2').on('click', (event) =>{
+      $('.modal-body').empty();
+      let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+      let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
+      console.log(url);
+      console.log(giphId);
+     
+      const template6 = `
+      <div class="card" style="width: 18rem;">
+          <img id="${giphId}" src="${url}" width="485" height="465"/>
+      <div class="image-content">
+      </div>
+      </div>
+      </div>
+      `
+  
+      $('.modal-body').append(template6);
+    //  END ALI CODE
+  });
 }
 
 

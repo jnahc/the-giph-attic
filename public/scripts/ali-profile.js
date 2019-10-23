@@ -107,7 +107,7 @@ const onSuccess = (response) => {
     });
 
     });
-
+// ALI CODE
     $('.eye1').on('click', (event) =>{
         $('.modal-body').empty();
         let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
@@ -125,8 +125,8 @@ const onSuccess = (response) => {
         `
     
         $('.modal-body').append(template5);
-       
-    });
+      });
+      //  ALI CODE END
 }
 
 
@@ -187,6 +187,7 @@ const onSuccess2 = (response) => {
     });
 
     })
+    // ALI CODE
     $('.eye2').on('click', (event) =>{
         $('.modal-body').empty();
         let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
@@ -204,7 +205,7 @@ const onSuccess2 = (response) => {
         `
     
         $('.modal-body').append(template6);
-       
+      //  END ALI CODE
     });
 }
 
