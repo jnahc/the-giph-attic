@@ -47,7 +47,7 @@ $(`#logout`).click(`click`, (event) => {
 // let fave = [];
 let count = 0
 const onSuccess = (response) => {
-    count += 26;
+    count += 25;
     response.data.forEach((giphy)=>{
         const template = `
         <div class="card" style="width: 18rem;">
@@ -71,18 +71,6 @@ const onSuccess = (response) => {
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
         console.log(url);
         console.log(giphId);
-        // const template3 = `
-        // <div class="card" style="width: 18rem;">
-        //     <img id="${giphId}" src="${url}" width="285" height="265"/>
-        //       <div class="image-content">
-        //         <div class="icons">
-        //           <button class="icon fas fa-times x1"></button>
-        //         </div>
-        //       </div>
-        //     </div>
-        // </div>
-        // `
-    // $('#favorite-content').append(template3);
 
     const favoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
   
@@ -131,7 +119,7 @@ const onSuccess = (response) => {
 
 let count2 = 0
 const onSuccess2 = (response) => {
-    count2 += 26;
+    count2 += 25;
     response.data.forEach((giphy)=>{
         const template2 = `
         <div class="card" style="width: 18rem;">
@@ -154,18 +142,7 @@ const onSuccess2 = (response) => {
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
         console.log(url);
         console.log(giphId);
-        // const template4 = `
-        // <div class="card" style="width: 18rem;">
-        //   <img id="${giphId}" src="${url}" width="285" height="265"/>
-        //     <div class="image-content">
-        //       <div class="icons">
-        //         <button class="icon fas fa-times x2"></button>
-        //       </div>
-        //     </div>
-        //   </div>
-        // </div>
-        // `
-    // $('#favorite-content').append(template4);
+      
 
     const createFavoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
    
@@ -214,11 +191,10 @@ const onSuccess2 = (response) => {
 const topicOne = () => {
     // event.preventDefault();
     let topic1Header = $(`#topic-1-header`).text()
-    console.log(`https://api.giphy.com/v1/gifs/search?q=${topic1Header}&api_key=dc6zaTOxFJmzC`)
     $('#topic-1-content').empty();
     $.ajax({
         method: "GET",
-        url: `https://api.giphy.com/v1/gifs/search?q=${topic1Header}&api_key=dc6zaTOxFJmzC`,
+        url: `https://api.giphy.com/v1/gifs/search?q=${topic1Header}&api_key=dc6zaTOxFJmzC&limit=10`,
         success: onSuccess,
         error: onError
     });
@@ -229,7 +205,7 @@ const topicTwo = () => {
     $('#topic-2-content').empty();
     $.ajax({
         method: "GET",
-        url: `https://api.giphy.com/v1/gifs/search?q=${$(`#topic-2-header`).text()}&api_key=dc6zaTOxFJmzC`,
+        url: `https://api.giphy.com/v1/gifs/search?q=${$(`#topic-2-header`).text()}&api_key=dc6zaTOxFJmzC&limit=10`,
         success: onSuccess2,
         error: onError
     });
@@ -245,6 +221,7 @@ const successCreatedFav = (response) => {
       <div class="image-content">
         <div class="icons">
            <button id="delete" class="icon fas fa-times x1"></button>
+           <button  class="icon fas fa-eye eye3" data-toggle="modal" data-target="#exampleModalCenter"></button>
         </div>
       </div>
     </div>
@@ -264,6 +241,25 @@ const successCreatedFav = (response) => {
       })
       populateFavorites();
   })
+  $('.eye3').on('click', (event) =>{
+    $('.modal-body').empty();
+    let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+    let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
+    console.log(url);
+    console.log(giphId);
+   
+    const template6 = `
+    <div class="card" style="width: 18rem;">
+        <img id="${giphId}" src="${url}" width="485" height="465"/>
+    <div class="image-content">
+    </div>
+    </div>
+    </div>
+    `
+
+    $('.modal-body').append(template6);
+  //  END ALI CODE
+});
 
 }
 
