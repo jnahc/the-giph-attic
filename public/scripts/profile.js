@@ -84,10 +84,10 @@ const onSuccess = (response) => {
         // `
     // $('#favorite-content').append(template3);
 
-    const favoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId}` // CAMEL CASE
+    const favoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
   
     let favoriteData = {
-      "giphId": giphId, 
+      "giphId": giphId+userId, 
       "url": url, 
       "userId": userId
     }
@@ -167,10 +167,11 @@ const onSuccess2 = (response) => {
         // `
     // $('#favorite-content').append(template4);
 
-    const createFavoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId}` // CAMEL CASE
+    const createFavoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
+   
   
     let favoriteData = {
-      "giphId": giphId, 
+      "giphId": giphId+userId, 
       "url": url, 
       "userId": userId,
     }
@@ -251,7 +252,7 @@ const successCreatedFav = (response) => {
   $('#favorite-content').append(template);
     
   })
-  $('#delete').on('click', (event) => {
+  $('#favorite-content').on('click',`#delete`, (event) => {
     let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
     console.log('x clicked');
     console.log(giphId);
@@ -261,6 +262,7 @@ const successCreatedFav = (response) => {
         success: (res)=>{console.log(res)},
         error: onError,
       })
+      populateFavorites();
   })
 
 }
