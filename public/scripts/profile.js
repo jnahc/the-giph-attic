@@ -136,6 +136,9 @@ const onSuccess2 = (response) => {
         $('#topic-2-content').append(template2);
     })
 
+    
+
+
     $('.heart2').on('click', (event) =>{
         console.log(`heart 2 clicked`)
         let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
@@ -198,17 +201,36 @@ const topicOne = () => {
         success: onSuccess,
         error: onError
     });
+    $('.load').on('click',() => {
+      $('#topic-1-content').empty();
+      $.ajax({
+          method: "GET",
+          url: `https://api.giphy.com/v1/gifs/search?q=${topic1Header}&api_key=dc6zaTOxFJmzC&offset=${count}&limit=10`,
+          success: onSuccess,
+          error: onError
+      });
+  })
 }
 
 const topicTwo = () => {
     // event.preventDefault();
+    let topic2Header = $(`#topic-2-header`).text()
     $('#topic-2-content').empty();
     $.ajax({
         method: "GET",
-        url: `https://api.giphy.com/v1/gifs/search?q=${$(`#topic-2-header`).text()}&api_key=dc6zaTOxFJmzC&limit=10`,
+        url: `https://api.giphy.com/v1/gifs/search?q=${topic2Header}&api_key=dc6zaTOxFJmzC&limit=10`,
         success: onSuccess2,
         error: onError
     });
+    $('.load2').on('click',() => {
+      $('#topic-2-content').empty();
+      $.ajax({
+          method: "GET",
+          url: `https://api.giphy.com/v1/gifs/search?q=${topic2Header}&api_key=dc6zaTOxFJmzC&offset=${count2}&limit=10`,
+          success: onSuccess2,
+          error: onError
+      });
+  })
 }
 
 const successCreatedFav = (response) => {
