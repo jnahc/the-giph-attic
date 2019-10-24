@@ -3,7 +3,7 @@
 const userId = window.location.pathname.split(`/`)[2];
 
 const onWorking = (response)=>{
-  console.log(response);
+  // console.log(response);
   $(`#welcome-user`).empty();
   $(`#welcome-user`).append(`Welcome, ${response.data.name}`);
   $(`#topic-1-header`).empty();
@@ -123,6 +123,7 @@ const onSuccess = (response) => {
     $('.modal-body').append(template5);
   });
   //  ALI CODE END 
+  
 
 }
 
@@ -242,7 +243,7 @@ const successCreatedFav = (response) => {
       <img id="${favoritedGiphy.giphId}" src="${favoritedGiphy.url}" width="285" height="265"/>
       <div class="image-content">
         <div class="icons">
-           <button class="icon fas fa-times x1"></button>
+           <button id="delete" class="icon fas fa-times x1"></button>
         </div>
       </div>
     </div>
@@ -250,7 +251,21 @@ const successCreatedFav = (response) => {
   $('#favorite-content').append(template);
     
   })
+  $('#delete').on('click', (event) => {
+    let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
+    console.log('x clicked');
+    console.log(giphId);
+      $.ajax({
+        method: `DELETE`,
+        url: `http://localhost:3000/api/v1/delete-favorite/${giphId}`,
+        success: (res)=>{console.log(res)},
+        error: onError,
+      })
+  })
+
 }
+
+
 
 const populateFavorites = () => {
   $.ajax({
@@ -263,14 +278,7 @@ const populateFavorites = () => {
 }
 
 
-const removeFavorite = () => {
-  $.ajax({
-    method: `DELETE`,
-    url: `http://localhost:3000/api/v1/delete-favorite/${giphId}`,
-    success: 'destroyed favorite',
-    error: onError,
-  })
-}
+
 
 function onError(xhr, status, errorThrown) {
 	alert("Sorry, there was a problem!");
