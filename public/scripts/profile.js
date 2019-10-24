@@ -244,6 +244,7 @@ const successCreatedFav = (response) => {
       <div class="image-content">
         <div class="icons">
            <button id="delete" class="icon fas fa-times x1"></button>
+           <button  class="icon fas fa-eye eye3" data-toggle="modal" data-target="#exampleModalCenter"></button>
         </div>
       </div>
     </div>
@@ -262,6 +263,25 @@ const successCreatedFav = (response) => {
         error: onError,
       })
   })
+  $('.eye3').on('click', (event) =>{
+    $('.modal-body').empty();
+    let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
+    let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
+    console.log(url);
+    console.log(giphId);
+   
+    const template6 = `
+    <div class="card" style="width: 18rem;">
+        <img id="${giphId}" src="${url}" width="485" height="465"/>
+    <div class="image-content">
+    </div>
+    </div>
+    </div>
+    `
+
+    $('.modal-body').append(template6);
+  //  END ALI CODE
+});
 
 }
 
