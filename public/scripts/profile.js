@@ -25,6 +25,15 @@ $.ajax({
   }
 })
 
+const returnHome = () => {
+  window.location = '/'
+}
+
+$('.home').on('click', () => {
+  returnHome();
+})
+
+
 const onLogoutSuccess = () => {
   window.location = `/login`
 }
