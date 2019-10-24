@@ -18,7 +18,13 @@ $agecheck = $(`#agecheck`);
 $submit = $(`#submit`);
 
 // LOGIN
+$('.signup').on('click', () => {
+  window.location = '/signup';
+})
 
+$('.login').on('click', () => {
+  window.location = '/login';
+})
 // already existing --- email, password, submit
 
 // SHOW PAGE
@@ -59,6 +65,25 @@ $(`form`).submit(`submit`, (event) => {
   // console.log(subscriberData);
 });
 
+
+//homepage gif display
+$gifGallery = $(`.gif-gallery`);
+
+const onSuccessHomepage = (response)=>{
+  response.data.forEach((gif)=>{
+    const template = `<img src="${gif.images.fixed_height.webp}" />`
+    $gifGallery.append(template);
+  })
+}
+
+$.ajax({
+  method: `GET`,
+  url: `https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=24`,
+  success: onSuccessHomepage,
+  error: (error) => {
+    console.log({error});
+  }
+})
 
 
 $signup.click(function(){
