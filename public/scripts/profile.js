@@ -47,7 +47,7 @@ $(`#logout`).click(`click`, (event) => {
 // let fave = [];
 let count = 0
 const onSuccess = (response) => {
-    count += 26;
+    count += 25;
     response.data.forEach((giphy)=>{
         const template = `
         <div class="card" style="width: 18rem;">
@@ -131,7 +131,7 @@ const onSuccess = (response) => {
 
 let count2 = 0
 const onSuccess2 = (response) => {
-    count2 += 26;
+    count2 += 25;
     response.data.forEach((giphy)=>{
         const template2 = `
         <div class="card" style="width: 18rem;">
@@ -214,11 +214,10 @@ const onSuccess2 = (response) => {
 const topicOne = () => {
     // event.preventDefault();
     let topic1Header = $(`#topic-1-header`).text()
-    console.log(`https://api.giphy.com/v1/gifs/search?q=${topic1Header}&api_key=dc6zaTOxFJmzC`)
     $('#topic-1-content').empty();
     $.ajax({
         method: "GET",
-        url: `https://api.giphy.com/v1/gifs/search?q=${topic1Header}&api_key=dc6zaTOxFJmzC`,
+        url: `https://api.giphy.com/v1/gifs/search?q=${topic1Header}&api_key=dc6zaTOxFJmzC&limit=10`,
         success: onSuccess,
         error: onError
     });
@@ -229,7 +228,7 @@ const topicTwo = () => {
     $('#topic-2-content').empty();
     $.ajax({
         method: "GET",
-        url: `https://api.giphy.com/v1/gifs/search?q=${$(`#topic-2-header`).text()}&api_key=dc6zaTOxFJmzC`,
+        url: `https://api.giphy.com/v1/gifs/search?q=${$(`#topic-2-header`).text()}&api_key=dc6zaTOxFJmzC&limit=10`,
         success: onSuccess2,
         error: onError
     });
