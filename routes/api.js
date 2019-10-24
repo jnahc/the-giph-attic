@@ -11,7 +11,8 @@ router.get('/verify', ctlr.auth.verifyAuth);
 router.delete('/logout', ctlr.auth.deleteSession);
 
 //--------------Profile-------------//
-// add userId later
+
+router.put(`/update/:userId`, ctlr.auth.updateUser);
 router.get('/profile/:userId', ctlr.auth.showProfile);
 
 

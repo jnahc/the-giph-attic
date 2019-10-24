@@ -39,6 +39,72 @@ const onLogoutSuccess = () => {
   window.location = `/login`
 }
 
+$(`#welcome-area`).on(`click`,`#change-name`, (event) => {
+  event.preventDefault();
+  console.log(`change name clicked`)
+  $(`#welcome-area`).empty();
+  $(`#welcome-area`).append(`
+  <form>
+    <div class="form-group">
+      <label for="fullname"></label>
+      <textarea class="form-control" id="fullname" name="fullname" rows="1"></textarea>
+    </div>
+  </form>
+    <button type="button" class="btn btn-secondary btn-sm" id="confirm-name-change">
+      Confirm Name Change
+    </button>
+    <button type="button" class="btn btn-secondary btn-sm" id="cancel-name-change">
+      Cancel
+    </button>
+  `)
+
+})
+
+$(`#welcome-area`).on(`click`, "#cancel-name-change", (event) => {
+  event.preventDefault();
+  console.log(`cancel button clicked`);
+  $(`#welcome-area`).empty();
+  $(`#welcome-area`).append(`
+  <span class="navbar-brand mb-0 mx-auto" id="welcome-user">Welcome, User!</span>
+  <button type="button" class="btn btn-secondary btn-sm" id="change-name">
+    Change Name
+  </button>
+  `);
+})
+
+$(`#welcome-area`).on(`click`, "#confirm-name-change", (event) => {
+  event.preventDefault();
+  let newNameVal = $(`#fullname`).val()
+  console.log(`confirm name change button clicked`);
+  console.log(newNameVal);
+  $(`#welcome-area`).empty();
+  $(`welcome-append`).append(`
+  <span class="navbar-brand mb-0 mx-auto" id="welcome-user">
+    Welcome, User!
+  </span>
+  <button type="button" class="btn btn-secondary btn-sm" id="change-name">
+    Change Name
+  </button>
+  `)
+
+    $.ajax({
+    method: `PUT`,
+    url: `http://localhost:3000/api/v1/update/${userId}`,
+    data: 
+    {"name": newNameVal}
+    ,
+    success: (success) => {
+      console.log(success);
+    },
+    error: (error) => {
+      console.log({error})
+    }
+  })
+
+
+  
+})
+
 $(`#logout`).click(`click`, (event) => {
   event.preventDefault();
   console.log(`logout clicked`);
