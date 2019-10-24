@@ -36,25 +36,27 @@ $(`form`).submit(`submit`, (event) => {
   // console.log(`submitted`)
   const apiUrl = `http://localhost:3000/api/v1/signup`
 
-  let subscriberData = {
-    "name": $fullname.val(),
-    "email": $email.val(),
-    "password": $password.val(),
-    "topic": $favoritetopic.val(),
-    "topic2": $favoritetopic2.val(),
-  }
-  
-  console.log(subscriberData);
-
-  $.ajax({
-    method: `POST`,
-    url: `${apiUrl}`,
-    data: subscriberData,
-    success: onSignUpSuccess,
-    error: (error) => {
-      console.log({error});
+  if ($password.val() !== $password2.val()) {
+    alert(`Passwords must match!`)
+  } else {
+    let subscriberData = {
+      "name": $fullname.val(),
+      "email": $email.val(),
+      "password": $password.val(),
+      "topic": $favoritetopic.val(),
+      "topic2": $favoritetopic2.val(),
     }
-  });
+    $.ajax({
+      method: `POST`,
+      url: `${apiUrl}`,
+      data: subscriberData,
+      success: onSignUpSuccess,
+      error: (error) => {
+        console.log({error});
+      }
+    });
+  }
+  // console.log(subscriberData);
 });
 
 
