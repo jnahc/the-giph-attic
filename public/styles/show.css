@@ -51,8 +51,6 @@ img {
     text-decoration: none;
     transition: 0.4s;
     filter: brightness(50%);
-    font-size: 8em;
-
 }
 
 .icon:hover:nth-child(1) {

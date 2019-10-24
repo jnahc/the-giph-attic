@@ -71,18 +71,6 @@ const onSuccess = (response) => {
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
         console.log(url);
         console.log(giphId);
-        // const template3 = `
-        // <div class="card" style="width: 18rem;">
-        //     <img id="${giphId}" src="${url}" width="285" height="265"/>
-        //       <div class="image-content">
-        //         <div class="icons">
-        //           <button class="icon fas fa-times x1"></button>
-        //         </div>
-        //       </div>
-        //     </div>
-        // </div>
-        // `
-    // $('#favorite-content').append(template3);
 
     const favoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
   
@@ -154,18 +142,7 @@ const onSuccess2 = (response) => {
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
         console.log(url);
         console.log(giphId);
-        // const template4 = `
-        // <div class="card" style="width: 18rem;">
-        //   <img id="${giphId}" src="${url}" width="285" height="265"/>
-        //     <div class="image-content">
-        //       <div class="icons">
-        //         <button class="icon fas fa-times x2"></button>
-        //       </div>
-        //     </div>
-        //   </div>
-        // </div>
-        // `
-    // $('#favorite-content').append(template4);
+      
 
     const createFavoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
    
