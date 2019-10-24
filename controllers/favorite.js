@@ -48,7 +48,7 @@ const create = (req,res) =>
 }
 
 const destroy = (req,res) => {
-  db.Favorite.findByIdAndDelete(req.params.giphId, (error, deletedGiph) => {
+  db.Favorite.findOneAndDelete({giphId : req.params.giphId}, (error, deletedGiph) => {
     if (error) return console.log(error);
     res.json({
       status: 200,
