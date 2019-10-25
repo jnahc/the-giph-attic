@@ -155,7 +155,19 @@ const updateUser = (req, res) => {
     })
 }
 
-
+// DELETE USER
+const deleteUser = (req, res) => {
+    db.User.findByIdAndDelete(
+        req.params.userId, (error, deletedUser) => {
+            if (error) return console.log(error);
+            res.json({
+                status:200,
+                count: 1,
+                data: deletedUser,
+            })
+        }
+    )
+}
 
 module.exports = {
     createUser: createUser,
@@ -164,4 +176,5 @@ module.exports = {
     verifyAuth: verifyAuth,
     showProfile: showProfile,
     updateUser: updateUser,
+    deleteUser: deleteUser,
 };

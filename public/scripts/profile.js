@@ -109,6 +109,42 @@ $(`#welcome-area`).on(`click`, "#confirm-name-change", (event) => {
   updateHeaders();
 })
 
+$(`#manage-account`).on(`click`,`#delete-account`, (event) => {
+  event.preventDefault();
+  console.log(`delete account clicked`)
+  $(`#manage-account`).empty();
+  $(`#manage-account`).append(`
+  <button class="btn btn-outline-danger" type="button" id="confirm-delete">Confirm Account Delete</button>
+  <button class="btn btn-outline-info" type="button" id="cancel-delete">No, I love Giphs</button>
+  `)
+})
+
+$(`#manage-account`).on(`click`, `#cancel-delete`, (event) => {
+  event.preventDefault();
+  console.log(`cancel delete clicked`)
+  $(`#manage-account`).empty();
+  $(`#manage-account`).append(`
+  <button class="btn btn-outline-danger" type="button" id="delete-account">Delete Account</button>
+  `)
+})
+
+const onDeleteSuccess = () => {
+  window.location = `/`
+}
+
+$(`#manage-account`).on(`click`, `#confirm-delete`, (event) => {
+  event.preventDefault();
+  console.log(`confirm delete clicked`);
+  $.ajax({
+    method: `DELETE`,
+    url: `http://localhost:3000/api/v1/delete/${userId}`,
+    success: onDeleteSuccess,
+    error: (error) => {
+      console.log({error});
+    }
+  });
+});
+
 $(`#logout`).click(`click`, (event) => {
   event.preventDefault();
   console.log(`logout clicked`);
@@ -122,9 +158,9 @@ $(`#logout`).click(`click`, (event) => {
   });
 });
 
-// end jeff code
 
-// let fave = [];
+
+
 let count = 0
 const onSuccess = (response) => {
     count += 25;
@@ -246,7 +282,7 @@ const onSuccess2 = (response) => {
       }
     });
     })
-     // ALI CODE
+ 
      $('.eye2').on('click', (event) =>{
       $('.modal-body').empty();
       let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
@@ -267,9 +303,6 @@ const onSuccess2 = (response) => {
     //  END ALI CODE
   });
 }
-
-  
-
 
 const topicOne = () => {
     // event.preventDefault();
@@ -365,8 +398,6 @@ const successCreatedFav = (response) => {
 
 }
 
-
-
 const populateFavorites = () => {
   $.ajax({
       method: `GET`,
@@ -376,9 +407,6 @@ const populateFavorites = () => {
 
   });
 }
-
-
-
 
 function onError(xhr, status, errorThrown) {
 	alert("Sorry, there was a problem!");
