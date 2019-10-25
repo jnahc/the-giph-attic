@@ -11,13 +11,12 @@ main {
 .card {
 	position: relative;
 	font-family: 'Josefin Sans', sans-serif;
-
+	background-color: rgba(0, 0, 0, .6) !important;
 }
 
 .card-header {
-	background-color: rgba(0, 0, 0, .5);
-	font-family: 'Josefin Sans', sans-serif;
-
+	font-size: 30px;
+	color: red;
 }
 
 .image-content {
@@ -28,7 +27,8 @@ main {
     height: 100%;
     padding: 5%;
     box-sizing: border-box;
-    z-index: 99;
+	z-index: 99;
+	
 }
 
 img {
@@ -50,6 +50,7 @@ img {
     font-size: 6em;
     margin: 0 10px;
 } 
+
 
 .image-content:hover .fa-heart  {
     color: red;
@@ -84,6 +85,10 @@ img {
     filter: brightness(100%);
 }
 
+.fa-redo:hover {
+	color: red;
+	font-size: 20px;
+}
 
 .fa-heart {
     color: transparent;
@@ -135,9 +140,10 @@ button {
 
 
 .navbar {
-    background-color: rgba(0, 0, 0, .6) !important;
-    
+	background-color: rgba(0, 0, 0, .6) !important;
 }
+
+
 
 .navbar-text {
     color: black !important;
@@ -157,4 +163,9 @@ button {
 
 #welcome-user {
 	color: white;
+	font-size: 30px;
 }
+
+/* .navbar-light {
+	margin-top: -25px;
+} */

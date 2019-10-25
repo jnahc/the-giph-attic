@@ -78,7 +78,7 @@ const onSuccessHomepage = (response)=>{
 
 $.ajax({
   method: `GET`,
-  url: `https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=24`,
+  url: `https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=25`,
   success: onSuccessHomepage,
   error: (error) => {
     console.log({error});
