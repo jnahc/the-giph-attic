@@ -1,6 +1,8 @@
 // grabbing information from user db - jeff code
 
 const userId = window.location.pathname.split(`/`)[2];
+let userTopic1=""
+let userTopic2=""
 
 const onWorking = (response)=>{
   // console.log(response);
@@ -8,27 +10,15 @@ const onWorking = (response)=>{
   $(`#welcome-user`).append(`Welcome, ${response.data.name}`);
   $(`#topic-1-header`).empty();
   $(`#topic-1-header`).append(`${response.data.topic}`)
+  userTopic1 = response.data.topic
   $(`#topic-2-header`).empty();
   $(`#topic-2-header`).append(`${response.data.topic2}`)
+  userTopic2 = response.data.topic2
 
 topicOne();
 topicTwo();
 populateFavorites();
 }
-
-const updateHeaders = () => {
-  $.ajax({
-    method: `GET`,
-    url: `http://localhost:3000/api/v1/profile/${userId}`,
-    success: onWorking,
-    error: (error) => {
-      console.log({error})
-    }
-  })
-}
-
-updateHeaders();
-
 
 
 
@@ -217,7 +207,7 @@ const onSuccess = (response) => {
    
     const template5 = `
     <div class="card" style="width: 18rem;">
-        <img id="${giphId}" src="${url}" width="485" height="465"/>
+        <img id="${giphId}" src="${url}" width="465" height="auto"/>
     <div class="image-content">
     </div>
     </div>
@@ -292,7 +282,7 @@ const onSuccess2 = (response) => {
      
       const template6 = `
       <div class="card" style="width: 18rem;">
-          <img id="${giphId}" src="${url}" width="485" height="465"/>
+          <img id="${giphId}" src="${url}" width="465" height="auto"/>
       <div class="image-content">
       </div>
       </div>
@@ -305,12 +295,10 @@ const onSuccess2 = (response) => {
 }
 
 const topicOne = () => {
-   
-    let topic1Header = $(`#topic-1-header`).text()
     $('#topic-1-content').empty();
     $.ajax({
         method: "GET",
-        url: `https://api.giphy.com/v1/gifs/search?q=${topic1Header}&api_key=dc6zaTOxFJmzC&limit=10`,
+        url: `https://api.giphy.com/v1/gifs/search?q=${userTopic1}&api_key=dc6zaTOxFJmzC&limit=10`,
         success: onSuccess,
         error: onError
     });
@@ -318,7 +306,7 @@ const topicOne = () => {
       $('#topic-1-content').empty();
       $.ajax({
           method: "GET",
-          url: `https://api.giphy.com/v1/gifs/search?q=${topic1Header}&api_key=dc6zaTOxFJmzC&offset=${count}&limit=10`,
+          url: `https://api.giphy.com/v1/gifs/search?q=${userTopic1}&api_key=dc6zaTOxFJmzC&offset=${count}&limit=10`,
           success: onSuccess,
           error: onError
       });
@@ -326,12 +314,10 @@ const topicOne = () => {
 }
 
 const topicTwo = () => {
-    // event.preventDefault();
-    let topic2Header = $(`#topic-2-header`).text()
     $('#topic-2-content').empty();
     $.ajax({
         method: "GET",
-        url: `https://api.giphy.com/v1/gifs/search?q=${topic2Header}&api_key=dc6zaTOxFJmzC&limit=10`,
+        url: `https://api.giphy.com/v1/gifs/search?q=${userTopic2}&api_key=dc6zaTOxFJmzC&limit=10`,
         success: onSuccess2,
         error: onError
     });
@@ -339,12 +325,27 @@ const topicTwo = () => {
       $('#topic-2-content').empty();
       $.ajax({
           method: "GET",
-          url: `https://api.giphy.com/v1/gifs/search?q=${topic2Header}&api_key=dc6zaTOxFJmzC&offset=${count2}&limit=10`,
+          url: `https://api.giphy.com/v1/gifs/search?q=${userTopic2}&api_key=dc6zaTOxFJmzC&offset=${count2}&limit=10`,
           success: onSuccess2,
           error: onError
       });
   })
 }
+
+const updateHeaders = () => {
+  $.ajax({
+    method: `GET`,
+    url: `http://localhost:3000/api/v1/profile/${userId}`,
+    success: onWorking,
+    error: (error) => {
+      console.log({error})
+    }
+  })
+  topicOne();
+  topicTwo();
+}
+
+updateHeaders();
 
 const successCreatedFav = (response) => {
   console.log(`response from success created fav`);
@@ -385,7 +386,7 @@ const successCreatedFav = (response) => {
    
     const template6 = `
     <div class="card" style="width: 18rem;">
-        <img id="${giphId}" src="${url}" width="485" height="465"/>
+        <img id="${giphId}" src="${url}" width="465" height="auto"/>
     <div class="image-content">
     </div>
     </div>
@@ -416,7 +417,7 @@ function onError(xhr, status, errorThrown) {
 	console.dir(xhr);
 }
 
-$(`#topic-1-header`).on(`click`, `#topicOneSearchButton`, (event) => {
+$(`#topic-1`).on(`click`, `#topicOneSearchButton`, (event) => {
   event.preventDefault();
   console.log(`topic 1 search button clicked`)
   $.ajax({
@@ -425,48 +426,68 @@ $(`#topic-1-header`).on(`click`, `#topicOneSearchButton`, (event) => {
     data: {
       "topic":$(`#topicOneSearch`).val()
     },
-    success: topicSearch,
+    success: onWorking,
     error: (error) => {
       console.log({error})
     }
   })
+  $(`#topic-1`).empty();
+  $(`#topic-1`).append(`
+  <div class="card-header" id="topic-1-header">
+ ${userTopic1}
+  </div>`);
 })
 
-$(`#topic-1-header`).on(`click`, () => {
-  const onTopicSearch = (response)=>{    
-    let topicOneValue = response.data.topic;   
-    let topicTwoValue = response.data.topic2;
-    $(`#topic-1-header`).empty();
-    $(`#topic-1-header`).append(`
+$(`#topic-2`).on(`click`, `#topicTwoSearchButton`, (event) => {
+  event.preventDefault();
+  console.log(`topic 2 search button clicked`)
+  $.ajax({
+    method: `PUT`,
+    url: `http://localhost:3000/api/v1/update/${userId}`,
+    data: {
+      "topic2":$(`#topicTwoSearch`).val()
+    },
+    success: onWorking,
+    error: (error) => {
+      console.log({error})
+    }
+  })
+  $(`#topic-2`).empty();
+  $(`#topic-2`).append(`
+  <div class="card-header" id="topic-2-header">
+ ${userTopic2}
+  </div>`);
+})
+
+
+
+$(`#topic-1`).on(`click`,(`#topic-1-header`), () => {
+    $(`#topic-1`).empty();
+    $(`#topic-1`).append(`
     <form>
       <div class="form-group">
         <label for="topicOneSearch"></label>
-        <textarea class="form-control" id="topicOneSearch" name="topicOneSearch"  rows="1">${topicOneValue}</textarea>
+        <textarea class="form-control" id="topicOneSearch" name="topicOneSearch"  rows="1">${userTopic1}</textarea>
       </div>
       <button type="button" class="btn btn-secondary btn-sm" id="topicOneSearchButton">Search</button
     </form>
     `);
-    $(`#topic-2-header`).empty();
-    $(`#topic-2-header`).append(`
-    <form>
-      <div class="form-group">
-        <label for="topicTwoSearch"></label>
-        <textarea class="form-control" id="topicTwoSearch" name="topicTwoSearch"  rows="1">${topicTwoValue}</textarea>
-      </div>
-      <button type="button" class="btn btn-secondary btn-sm" id="topicOneSearchButton">Search</button
-    </form>
-    `)
   }  
-  $.ajax({
-    method: `GET`,
-    url: `http://localhost:3000/api/v1/profile/${userId}`,
-    success: onTopicSearch,
-    error: (error) => {
-      console.log({error})
-    }
-  })
+)
 
-})
+$(`#topic-2`).on(`click`,(`#topic-2-header`), () => {
+  $(`#topic-2`).empty();
+  $(`#topic-2`).append(`
+  <form>
+    <div class="form-group">
+      <label for="topicTwoSearch"></label>
+      <textarea class="form-control" id="topicTwoSearch" name="topicTwoSearch"  rows="1">${userTopic2}</textarea>
+    </div>
+    <button type="button" class="btn btn-secondary btn-sm" id="topicTwoSearchButton">Search</button
+  </form>
+  `)
+})  
+
 
 
 

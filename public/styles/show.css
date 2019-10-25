@@ -161,6 +161,10 @@ button {
 	color: white;
 }
 
+.modal-content {
+    width: 600px;
+}
+
 #welcome-user {
 	color: white;
 	font-size: 30px;
