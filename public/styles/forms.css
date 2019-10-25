@@ -2,10 +2,10 @@
   background-image: url("/images/logo.png");
   background-size: 550px auto;
   background-repeat: no-repeat;
-  /* background-attachment: fixed; */
   background-position: center;
   background-color: #FBF334;
   height: 275px;
+  margin-bottom: 20px;
 }
 
 body {

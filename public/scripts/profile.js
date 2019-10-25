@@ -131,7 +131,7 @@ const onSuccess = (response) => {
     response.data.forEach((giphy)=>{
         const template = `
         <div class="card" style="width: 18rem;">
-            <img id="${giphy.id}" src="${giphy.images.downsized.url}" width="285" height="265"/>
+            <img id="${giphy.id}" src="${giphy.images.downsized.url}" width="275" height="265"/>
                 <div class="image-content">
                     <div class="icons">
                         <button class="icon fas fa-heart heart1"></button>
@@ -203,7 +203,7 @@ const onSuccess2 = (response) => {
     response.data.forEach((giphy)=>{
         const template2 = `
         <div class="card" style="width: 18rem;">
-            <img id="${giphy.id}" src="${giphy.images.downsized.url}" width="285" height="265"/>
+            <img id="${giphy.id}" src="${giphy.images.downsized.url}" width="275" height="265"/>
                 <div class="image-content">
                     <div class="icons">
                         <button class="icon fas fa-heart heart2"></button>
@@ -281,7 +281,7 @@ const topicOne = () => {
         success: onSuccess,
         error: onError
     });
-    $('.load').on('click',() => {
+    $('.redo').on('click',() => {
       $('#topic-1-content').empty();
       $.ajax({
           method: "GET",
@@ -302,7 +302,7 @@ const topicTwo = () => {
         success: onSuccess2,
         error: onError
     });
-    $('.load2').on('click',() => {
+    $('.redo2').on('click',() => {
       $('#topic-2-content').empty();
       $.ajax({
           method: "GET",
