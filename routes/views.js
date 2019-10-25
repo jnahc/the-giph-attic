@@ -44,10 +44,5 @@ router.get('/profile', (req, res) => {
 });
 
 
-// // ------ FAVORITE ROUTES
-
-
-
-
 
 module.exports = router;
