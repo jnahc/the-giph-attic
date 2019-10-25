@@ -1,10 +1,10 @@
 .jumbotron {
   background-image: url("/images/logo.png");
-  background-size: 550px auto;
+  background-size: 820px auto;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #FBF334;
-  height: 275px;
+  height: 375px;
   margin-bottom: 20px;
 }
 
