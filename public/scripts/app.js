@@ -98,3 +98,11 @@ $logout.click(function(){
   console.log(`logout`)
 })
 
+// --------HOME BUTTON LINK---------//
+const returnHome = () => {
+  window.location = '/'
+}
+
+$('.home').on('click', () => {
+  returnHome();
+})
