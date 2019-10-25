@@ -14,6 +14,7 @@ router.delete('/logout', ctlr.auth.deleteSession);
 
 router.put(`/update/:userId`, ctlr.auth.updateUser);
 router.get('/profile/:userId', ctlr.auth.showProfile);
+router.delete(`/delete/:userId`, ctlr.auth.deleteUser);
 
 
 // ----------- Favorites------------ //
