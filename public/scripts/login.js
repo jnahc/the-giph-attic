@@ -13,7 +13,7 @@ const onSuccess = (res) => {
 $(`form`).submit(`submit`, (event) => {
   event.preventDefault();
   console.log(`submitted`)
-  const apiUrl = `http://localhost:3000/api/v1/login`
+  const apiUrl = `/api/v1/login`
 
   let subscriberData = {
     "email": $email.val(),

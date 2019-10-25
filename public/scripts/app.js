@@ -35,7 +35,7 @@ const onSignUpSuccess = () => {
 
 $(`form`).submit(`submit`, (event) => {
   event.preventDefault();
-  const apiUrl = `http://localhost:3000/api/v1/signup`
+  const apiUrl = `api/v1/signup`
 
   if ($password.val() !== $password2.val()) {
     alert(`Passwords must match!`)

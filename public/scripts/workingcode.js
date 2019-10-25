@@ -18,7 +18,7 @@ $('.heart2').on('click', (event) =>{
   </div>
   `
 $('#favorite-content').append(template4);
-const favoriteUrl = `http://localhost:3000/api/v1/createfavorite`
+const favoriteUrl = `/api/v1/createfavorite`
 let favoriteData = {
   "memeId": giphId, 
   "url": url, 
