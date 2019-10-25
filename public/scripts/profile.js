@@ -26,6 +26,8 @@ $.ajax({
   }
 })
 
+
+// --------HOME BUTTON LINK---------//
 const returnHome = () => {
   window.location = '/'
 }
