@@ -1,11 +1,8 @@
-// grabbing information from user db - jeff code
-
 const userId = window.location.pathname.split(`/`)[2];
 let userTopic1=""
 let userTopic2=""
 
 const onWorking = (response)=>{
-  // console.log(response);
   $(`#welcome-user`).empty();
   $(`#welcome-user`).append(`Welcome, ${response.data.name}`);
   $(`#topic-1-header`).empty();
@@ -31,14 +28,12 @@ $('.home').on('click', () => {
   returnHome();
 })
 
-
 const onLogoutSuccess = () => {
   window.location = `/login`
 }
 
 $(`#welcome-area`).on(`click`,`#change-name`, (event) => {
   event.preventDefault();
-  console.log(`change name clicked`)
   $(`#welcome-area`).empty();
   $(`#welcome-area`).append(`
   <form>
@@ -59,7 +54,6 @@ $(`#welcome-area`).on(`click`,`#change-name`, (event) => {
 
 $(`#welcome-area`).on(`click`, "#cancel-name-change", (event) => {
   event.preventDefault();
-  console.log(`cancel button clicked`);
   $(`#welcome-area`).empty();
   $(`#welcome-area`).append(`
   <span class="navbar-brand mb-0 mx-auto" id="welcome-user">Welcome, User!</span>
@@ -73,8 +67,6 @@ $(`#welcome-area`).on(`click`, "#cancel-name-change", (event) => {
 $(`#welcome-area`).on(`click`, "#confirm-name-change", (event) => {
   event.preventDefault();
   let newNameVal = $(`#fullname`).val()
-  console.log(`confirm name change button clicked`);
-  console.log(newNameVal);
   $(`#welcome-area`).empty();
   $(`#welcome-area`).append(`
   <span class="navbar-brand mb-0 mx-auto" id="welcome-user">Welcome, User!</span>
@@ -101,7 +93,6 @@ $(`#welcome-area`).on(`click`, "#confirm-name-change", (event) => {
 
 $(`#manage-account`).on(`click`,`#delete-account`, (event) => {
   event.preventDefault();
-  console.log(`delete account clicked`)
   $(`#manage-account`).empty();
   $(`#manage-account`).append(`
   <button class="btn btn-outline-danger" type="button" id="confirm-delete">Confirm Account Delete</button>
@@ -111,7 +102,6 @@ $(`#manage-account`).on(`click`,`#delete-account`, (event) => {
 
 $(`#manage-account`).on(`click`, `#cancel-delete`, (event) => {
   event.preventDefault();
-  console.log(`cancel delete clicked`)
   $(`#manage-account`).empty();
   $(`#manage-account`).append(`
   <button class="btn btn-outline-danger" type="button" id="delete-account">Delete Account</button>
@@ -124,7 +114,6 @@ const onDeleteSuccess = () => {
 
 $(`#manage-account`).on(`click`, `#confirm-delete`, (event) => {
   event.preventDefault();
-  console.log(`confirm delete clicked`);
   $.ajax({
     method: `DELETE`,
     url: `http://localhost:3000/api/v1/delete/${userId}`,
@@ -137,7 +126,6 @@ $(`#manage-account`).on(`click`, `#confirm-delete`, (event) => {
 
 $(`#logout`).click(`click`, (event) => {
   event.preventDefault();
-  console.log(`logout clicked`);
   $.ajax({
     method: `DELETE`,
     url: `http://localhost:3000/api/v1/logout`,
@@ -172,11 +160,8 @@ const onSuccess = (response) => {
     })
 
     $('.heart1').on('click', (event) =>{
-        console.log(`heart 1 clicked`)
         let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
-        console.log(url);
-        console.log(giphId);
 
     const favoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
   
@@ -202,8 +187,6 @@ const onSuccess = (response) => {
     $('.modal-body').empty();
     let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
     let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
-    console.log(url);
-    console.log(giphId);
    
     const template5 = `
     <div class="card" style="width: 18rem;">
@@ -246,12 +229,9 @@ const onSuccess2 = (response) => {
 
 
     $('.heart2').on('click', (event) =>{
-        console.log(`heart 2 clicked`)
         let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
-        console.log(url);
-        console.log(giphId);
-      
+
 
     const createFavoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
    
@@ -277,8 +257,7 @@ const onSuccess2 = (response) => {
       $('.modal-body').empty();
       let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
       let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
-      console.log(url);
-      console.log(giphId);
+  
      
       const template6 = `
       <div class="card" style="width: 18rem;">
@@ -290,7 +269,6 @@ const onSuccess2 = (response) => {
       `
   
       $('.modal-body').append(template6);
-    //  END ALI CODE
   });
 }
 
@@ -348,7 +326,6 @@ const updateHeaders = () => {
 updateHeaders();
 
 const successCreatedFav = (response) => {
-  console.log(`response from success created fav`);
   $(`#favorite-content`).empty();
   response.data.forEach((favoritedGiphy) => {
     const template = `
@@ -367,8 +344,6 @@ const successCreatedFav = (response) => {
   })
   $('#favorite-content').on('click',`#delete`, (event) => {
     let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
-    console.log('x clicked');
-    console.log(giphId);
       $.ajax({
         method: `DELETE`,
         url: `http://localhost:3000/api/v1/delete-favorite/${giphId}`,
@@ -381,8 +356,7 @@ const successCreatedFav = (response) => {
     $('.modal-body').empty();
     let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
     let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
-    console.log(url);
-    console.log(giphId);
+
    
     const template6 = `
     <div class="card" style="width: 18rem;">
@@ -394,7 +368,6 @@ const successCreatedFav = (response) => {
     `
 
     $('.modal-body').append(template6);
-  //  END ALI CODE
 });
 
 }
@@ -419,7 +392,6 @@ function onError(xhr, status, errorThrown) {
 
 $(`#topic-1`).on(`click`, `#topicOneSearchButton`, (event) => {
   event.preventDefault();
-  console.log(`topic 1 search button clicked`)
   $.ajax({
     method: `PUT`,
     url: `http://localhost:3000/api/v1/update/${userId}`,
@@ -440,7 +412,6 @@ $(`#topic-1`).on(`click`, `#topicOneSearchButton`, (event) => {
 
 $(`#topic-2`).on(`click`, `#topicTwoSearchButton`, (event) => {
   event.preventDefault();
-  console.log(`topic 2 search button clicked`)
   $.ajax({
     method: `PUT`,
     url: `http://localhost:3000/api/v1/update/${userId}`,

@@ -1,6 +1,4 @@
 
-console.log(`yup`);
-
 // -------------------- SELECTORS
 
 // HOMEPAGE
@@ -25,7 +23,6 @@ $('.signup').on('click', () => {
 $('.login').on('click', () => {
   window.location = '/login';
 })
-// already existing --- email, password, submit
 
 // SHOW PAGE
 $logout = $(`#logout`);
@@ -33,13 +30,11 @@ $logout = $(`#logout`);
 // EVENT LISTENERS
 
 const onSignUpSuccess = () => {
-  console.log(`sign up success`)
   window.location = `/login`;
 }
 
 $(`form`).submit(`submit`, (event) => {
   event.preventDefault();
-  // console.log(`submitted`)
   const apiUrl = `http://localhost:3000/api/v1/signup`
 
   if ($password.val() !== $password2.val()) {
@@ -62,7 +57,6 @@ $(`form`).submit(`submit`, (event) => {
       }
     });
   }
-  // console.log(subscriberData);
 });
 
 
