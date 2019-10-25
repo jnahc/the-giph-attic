@@ -56,13 +56,13 @@ $(`#welcome-area`).on(`click`,`#change-name`, (event) => {
       <label for="fullname"></label>
       <textarea class="form-control" id="fullname" name="fullname" rows="1"></textarea>
     </div>
-  </form>
     <button type="button" class="btn btn-secondary btn-sm" id="confirm-name-change">
       Confirm Name Change
     </button>
     <button type="button" class="btn btn-secondary btn-sm" id="cancel-name-change">
       Cancel
     </button>
+  </form>
   `)
 
 })
@@ -305,7 +305,7 @@ const onSuccess2 = (response) => {
 }
 
 const topicOne = () => {
-    // event.preventDefault();
+   
     let topic1Header = $(`#topic-1-header`).text()
     $('#topic-1-content').empty();
     $.ajax({
@@ -408,12 +408,66 @@ const populateFavorites = () => {
   });
 }
 
+
 function onError(xhr, status, errorThrown) {
 	alert("Sorry, there was a problem!");
 	console.log("Error: " + errorThrown);
 	console.log("Status: " + status);
 	console.dir(xhr);
 }
+
+$(`#topic-1-header`).on(`click`, `#topicOneSearchButton`, (event) => {
+  event.preventDefault();
+  console.log(`topic 1 search button clicked`)
+  $.ajax({
+    method: `PUT`,
+    url: `http://localhost:3000/api/v1/update/${userId}`,
+    data: {
+      "topic":$(`#topicOneSearch`).val()
+    },
+    success: topicSearch,
+    error: (error) => {
+      console.log({error})
+    }
+  })
+})
+
+$(`#topic-1-header`).on(`click`, () => {
+  const onTopicSearch = (response)=>{    
+    let topicOneValue = response.data.topic;   
+    let topicTwoValue = response.data.topic2;
+    $(`#topic-1-header`).empty();
+    $(`#topic-1-header`).append(`
+    <form>
+      <div class="form-group">
+        <label for="topicOneSearch"></label>
+        <textarea class="form-control" id="topicOneSearch" name="topicOneSearch"  rows="1">${topicOneValue}</textarea>
+      </div>
+      <button type="button" class="btn btn-secondary btn-sm" id="topicOneSearchButton">Search</button
+    </form>
+    `);
+    $(`#topic-2-header`).empty();
+    $(`#topic-2-header`).append(`
+    <form>
+      <div class="form-group">
+        <label for="topicTwoSearch"></label>
+        <textarea class="form-control" id="topicTwoSearch" name="topicTwoSearch"  rows="1">${topicTwoValue}</textarea>
+      </div>
+      <button type="button" class="btn btn-secondary btn-sm" id="topicOneSearchButton">Search</button
+    </form>
+    `)
+  }  
+  $.ajax({
+    method: `GET`,
+    url: `http://localhost:3000/api/v1/profile/${userId}`,
+    success: onTopicSearch,
+    error: (error) => {
+      console.log({error})
+    }
+  })
+
+})
+
 
 
 
