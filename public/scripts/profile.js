@@ -280,16 +280,17 @@ const topicOne = () => {
         success: onSuccess,
         error: onError
     });
-    $('.redo').on('click',() => {
-      $('#topic-1-content').empty();
-      $.ajax({
+  }
+        $('.redo').on('click',() => {
+          $('#topic-1-content').empty();
+        $.ajax({
           method: "GET",
           url: `https://api.giphy.com/v1/gifs/search?q=${userTopic1}&api_key=dc6zaTOxFJmzC&offset=${count}&limit=10`,
           success: onSuccess,
           error: onError
-      });
+        });
   })
-}
+
 
 const topicTwo = () => {
     $('#topic-2-content').empty();
@@ -299,6 +300,7 @@ const topicTwo = () => {
         success: onSuccess2,
         error: onError
     });
+  }
     $('.redo2').on('click',() => {
       $('#topic-2-content').empty();
       $.ajax({
@@ -308,7 +310,7 @@ const topicTwo = () => {
           error: onError
       });
   })
-}
+
 
 const updateHeaders = () => {
   $.ajax({
