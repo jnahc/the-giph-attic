@@ -9,7 +9,8 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
+	font-family: 'Josefin Sans', sans-serif;
+
 	font-size:15px;
 	font-weight:bold;
 	padding:6px 24px;
@@ -34,6 +35,9 @@ body {
     background-color: #FBF334;
 }
 
+main {
+    margin-bottom: 100px;
+}
 
 .logo img {
     max-width: 550px;   
@@ -61,14 +65,14 @@ button {
 	display:inline-block;
 	cursor:pointer;
 	color:white;
-	font-family:Arial;
 	font-size:20px;
 	font-weight:bold;
     padding:10px 24px;
     margin: 20px;
 	text-decoration:none;
     text-shadow:0px 1px 0px #810e05;
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+
 }
 button:hover {
 	background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
@@ -105,8 +109,6 @@ h3 {
 
 .gif-gallery {
     margin-top: 65px;
-    /* margin-right: 30px;
-    margin-left: 20px; */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -127,4 +129,5 @@ h3 {
 
 .navbar-text {
     color: black !important;
+    font-family: 'Permanent Marker', cursive;
 }
