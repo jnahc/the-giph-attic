@@ -8,20 +8,25 @@
   <script src="https://kit.fontawesome.com/4634847c36.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/show.css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
   <title>Profile | meme-attic</title>
 </head>
 <body>
 <!-- TOP NAV SECTION  -->
     <nav class="navbar navbar-light bg-light">
-      <span class="navbar-brand mb-0 h1 mx-auto">Project 1</span>
+      <button class="home">Home</button>
+      <span id="manage-account">
+          <button class="btn btn-outline-danger" type="button" id="delete-account">Delete Account</button>
+      </span>
       <button class="btn btn-outline-success" type="button" id="logout">Logout</button>
     </nav>
 <!-- END TOP NAV       -->
     <main class="container text-center mt-4">
       <!-- WELCOME USER SECTION  -->
-      <nav class="navbar navbar-light bg-light">
-        <header class="container">
-          <span class="navbar-brand mb-0 mx-auto" id="welcome-user">Welcome, User!</span>
+      <nav class="navbar navbar-light welcome-header">
+        <header class="container" id="welcome-area">
+          <span class="navbar-brand mb-0 mx-auto" id="welcome-user">Welcome, User!</span><button type="button" class="btn btn-outline-danger" id="change-name">Change Name</button>
         </header>
       </nav>   
       <!-- END WELCOME USER -->
@@ -32,17 +37,17 @@
         <div d-flex flex-column>
           <!-- START FIRST COLUMN HEADER -->
           <div class="card" style="width: 18rem;">
-            <div class="card-header" id="topic-1-header">
-              Topic 1
-            </div>
+              <button class="fas fa-redo redo"></button>
+              <div id="topic-1">
+                <div class="card-header topic-header" id="topic-1-header">
+                  Topic 1
+                </div>
+              </div>
+            
           </div>
           <!-- END FIRST COLUMN HEADER  -->
-          <!-- START FIRST COLUMN CONTENT  -->
-          <div>
-            <button class="load">Add New</button>
-          </div>
-          <div id="topic-1-content">
-           
+          <!-- START FIRST COLUMN CONTENT  -->        
+          <div id="topic-1-content">           
           </div>
           <!-- END FIRST COLUMN CONTENT  -->
           
@@ -52,19 +57,17 @@
         <div d-flex flex-column>
           <!-- START SECOND HEADER  -->
           <div class="card" style="width: 18rem;">
-            <div class="card-header" id="topic-2-header">
-              Topic 2
-            </div>
+              <button class="fas fa-redo redo2"></button>
+              <div id="topic-2">
+                <div class="card-header topic-header" id="topic-2-header">
+                  Topic 2
+                </div>
+              </div>
           </div>
           <!-- END SECOND HEADER -->
           <!-- START SECOND COLUMN CONTENT  -->
-          <div>
-            <button class="load2">Add New</button>
-  
-          </div>
           <div id="topic-2-content">
-              <!-- <div>2</div>
-              <div>2</div> -->
+
           </div>
           
           <!-- END SECOND COLUMN CONTENT  -->
@@ -83,33 +86,23 @@
             <!-- END THIRD HEADER  -->
           </div>
           <div id="favorite-content">
-          <!-- <div>3</div>
-          <div>3</div> -->
+
         </div>
         </div>
         <!-- END THIRD COLUMN  -->
       </content>
       <!-- END MAIN CONTENT  -->
     </main>
-
-    <nav class="navbar fixed-bottom navbar-light bg-light d-flex justify-content-around">
-      <a class="navbar-brand" href="#">Project 1</a>
-      <div class="navbar-text">AJ Inc &copy; 2019</div>
-    </nav>
-
-
-   
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Giph Preview</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+    <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Giph Preview</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
       <div class="modal-body">
         <!--card modal image START-->
          <div id="modalBody">
@@ -122,14 +115,15 @@
   </div>
 </div>
 
-  <!-- <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script> -->
+    <nav class="navbar fixed-bottom navbar-light bg-light d-flex justify-content-around">
+      <div class="navbar-text">The-Giph-Attic Inc. &copy; 2019</div>
+    </nav>
+
+
+  
   <script src="/scripts/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="/scripts/app.js"></script>
   <script src="/scripts/profile.js"></script>
 
 

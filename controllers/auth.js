@@ -137,7 +137,37 @@ const showProfile = (req, res) => {
     });
 };
 
+// UPDATE USER
+const updateUser = (req, res) => {
+    db.User.findByIdAndUpdate(
+        req.params.userId,
+        req.body, {new: true},
+        (error, updatedProfile) => {
+        if (error) return res.status(500).json({
+            status: 500,
+            error: [{ message: `Something went wrong, please try again`}]
+        });
+        res.status(200).json({
+            status: 200,
+            data: updatedProfile,
+        });
+      
+    })
+}
 
+// DELETE USER
+const deleteUser = (req, res) => {
+    db.User.findByIdAndDelete(
+        req.params.userId, (error, deletedUser) => {
+            if (error) return console.log(error);
+            res.json({
+                status:200,
+                count: 1,
+                data: deletedUser,
+            })
+        }
+    )
+}
 
 module.exports = {
     createUser: createUser,
@@ -145,4 +175,6 @@ module.exports = {
     deleteSession: deleteSession,
     verifyAuth: verifyAuth,
     showProfile: showProfile,
+    updateUser: updateUser,
+    deleteUser: deleteUser,
 };

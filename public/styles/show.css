@@ -1,5 +1,22 @@
+body {
+	background-color: #FBF334;
+	font-family: 'Josefin Sans', sans-serif;
+
+}
+
+main {
+	margin-bottom: 70px;
+}
+
 .card {
-    position: relative;
+	position: relative;
+	font-family: 'Josefin Sans', sans-serif;
+	background-color: rgba(0, 0, 0, .6) !important;
+}
+
+.card-header {
+	font-size: 30px;
+	color: red;
 }
 
 .image-content {
@@ -10,7 +27,8 @@
     height: 100%;
     padding: 5%;
     box-sizing: border-box;
-    z-index: 99;
+	z-index: 99;
+	
 }
 
 img {
@@ -18,12 +36,24 @@ img {
     z-index: 2;
 }
 
+/* .image-content:parent:hover {
+	background: rgba(240, 63, 63, 0.3);
+}
+.image-content:parent:hover {
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.image-content:hover:hover {
+    opacity: .5;
+    transform: scale(1);
+} */
+
 .icons {
     position: absolute;
     margin-left: auto;
     margin-right: auto;
     margin-top: 25%;
-    /* margin-bottom: auto; */
     right: 0;
     left: 0;
 }
@@ -34,12 +64,12 @@ img {
     margin: 0 10px;
 } 
 
+
 .image-content:hover .fa-heart  {
     color: red;
     text-decoration: none;
     transition: 0.4s;
     filter: brightness(50%);
-    ≈
 }
 
 .image-content:hover .fa-eye {
@@ -68,6 +98,10 @@ img {
     filter: brightness(100%);
 }
 
+.fa-redo:hover {
+	color: red;
+	font-size: 30px;
+}
 
 .fa-heart {
     color: transparent;
@@ -84,5 +118,67 @@ img {
 button {
     background-color: transparent;
     border-width: 0;
-    border-style: none;
+	border-style: none;
+	font-family: 'Josefin Sans', sans-serif;
+
+}
+
+
+/* https://www.bestcssbuttongenerator.com/#/33 */
+.home {
+	box-shadow:inset 0px 1px 0px 0px #f5978e;
+	background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
+	background-color:#f24537;
+	border-radius:6px;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Josefin Sans', sans-serif;
+
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
+}
+.home:hover {
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+	background-color:#c62d1f;
+}
+.home:active {
+	position:relative;
+    top:1px;
+}
+
+
+.navbar {
+	background-color: rgba(0, 0, 0, .6) !important;
+}
+
+
+
+.navbar-text {
+    color: black !important;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.modal-body {
+	background-color: rgb(95, 18, 18) !important;
+	font-family: 'Permanent Marker', cursive !important;
+}
+
+.modal-header {
+	background-color: rgb(95, 18, 18) !important;
+	font-family: 'Permanent Marker', cursive !important;
+	color: white;
+}
+
+.modal-content {
+    width: 600px;
+}
+
+#welcome-user {
+	color: white;
+	font-size: 30px;
 }

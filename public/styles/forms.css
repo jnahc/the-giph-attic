@@ -1,0 +1,17 @@
+.jumbotron {
+  background-image: url("/images/logo.png");
+  background-size: 820px auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #FBF334;
+  height: 375px;
+  margin-bottom: 20px;
+}
+
+body {
+  background-color: #FBF334;
+}
+
+form {
+  margin-top: -3%;
+}
