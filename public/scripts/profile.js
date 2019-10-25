@@ -77,7 +77,7 @@ $(`#welcome-area`).on(`click`, "#confirm-name-change", (event) => {
 
     $.ajax({
     method: `PUT`,
-    url: `http://localhost:3000/api/v1/update/${userId}`,
+    url: `/api/v1/update/${userId}`,
     data: 
     {"name": newNameVal}
     ,
@@ -116,7 +116,7 @@ $(`#manage-account`).on(`click`, `#confirm-delete`, (event) => {
   event.preventDefault();
   $.ajax({
     method: `DELETE`,
-    url: `http://localhost:3000/api/v1/delete/${userId}`,
+    url: `/api/v1/delete/${userId}`,
     success: onDeleteSuccess,
     error: (error) => {
       console.log({error});
@@ -128,7 +128,7 @@ $(`#logout`).click(`click`, (event) => {
   event.preventDefault();
   $.ajax({
     method: `DELETE`,
-    url: `http://localhost:3000/api/v1/logout`,
+    url: `/api/v1/logout`,
     success: onLogoutSuccess,
     error: (error) => {
       console.log({error})
@@ -163,7 +163,7 @@ const onSuccess = (response) => {
         let url = $(event.target).parent().parent().parent().find('img')[0].currentSrc;
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
 
-    const favoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
+    const favoriteUrl = `/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
   
     let favoriteData = {
       "giphId": giphId+userId, 
@@ -233,7 +233,7 @@ const onSuccess2 = (response) => {
         let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
 
 
-    const createFavoriteUrl = `http://localhost:3000/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
+    const createFavoriteUrl = `/api/v1/create-favorite/${giphId+userId}` // CAMEL CASE
    
   
     let favoriteData = {
@@ -313,7 +313,7 @@ const topicTwo = () => {
 const updateHeaders = () => {
   $.ajax({
     method: `GET`,
-    url: `http://localhost:3000/api/v1/profile/${userId}`,
+    url: `/api/v1/profile/${userId}`,
     success: onWorking,
     error: (error) => {
       console.log({error})
@@ -346,7 +346,7 @@ const successCreatedFav = (response) => {
     let giphId = $(event.target).parent().parent().parent().find('img')[0].id;
       $.ajax({
         method: `DELETE`,
-        url: `http://localhost:3000/api/v1/delete-favorite/${giphId}`,
+        url: `/api/v1/delete-favorite/${giphId}`,
         success: (res)=>{console.log(res)},
         error: onError,
       })
@@ -375,7 +375,7 @@ const successCreatedFav = (response) => {
 const populateFavorites = () => {
   $.ajax({
       method: `GET`,
-      url: `http://localhost:3000/api/v1/show-favorite/${userId}`,
+      url: `/api/v1/show-favorite/${userId}`,
       success: successCreatedFav,
       error: onError
 
@@ -394,7 +394,7 @@ $(`#topic-1`).on(`click`, `#topicOneSearchButton`, (event) => {
   event.preventDefault();
   $.ajax({
     method: `PUT`,
-    url: `http://localhost:3000/api/v1/update/${userId}`,
+    url: `/api/v1/update/${userId}`,
     data: {
       "topic":$(`#topicOneSearch`).val()
     },
@@ -414,7 +414,7 @@ $(`#topic-2`).on(`click`, `#topicTwoSearchButton`, (event) => {
   event.preventDefault();
   $.ajax({
     method: `PUT`,
-    url: `http://localhost:3000/api/v1/update/${userId}`,
+    url: `/api/v1/update/${userId}`,
     data: {
       "topic2":$(`#topicTwoSearch`).val()
     },
