@@ -16,15 +16,20 @@ topicTwo();
 populateFavorites();
 }
 
+const updateHeaders = () => {
+  $.ajax({
+    method: `GET`,
+    url: `http://localhost:3000/api/v1/profile/${userId}`,
+    success: onWorking,
+    error: (error) => {
+      console.log({error})
+    }
+  })
+}
 
-$.ajax({
-  method: `GET`,
-  url: `http://localhost:3000/api/v1/profile/${userId}`,
-  success: onWorking,
-  error: (error) => {
-    console.log({error})
-  }
-})
+updateHeaders();
+
+
 
 const returnHome = () => {
   window.location = '/'
@@ -70,6 +75,7 @@ $(`#welcome-area`).on(`click`, "#cancel-name-change", (event) => {
     Change Name
   </button>
   `);
+  updateHeaders();
 })
 
 $(`#welcome-area`).on(`click`, "#confirm-name-change", (event) => {
@@ -78,10 +84,8 @@ $(`#welcome-area`).on(`click`, "#confirm-name-change", (event) => {
   console.log(`confirm name change button clicked`);
   console.log(newNameVal);
   $(`#welcome-area`).empty();
-  $(`welcome-append`).append(`
-  <span class="navbar-brand mb-0 mx-auto" id="welcome-user">
-    Welcome, User!
-  </span>
+  $(`#welcome-area`).append(`
+  <span class="navbar-brand mb-0 mx-auto" id="welcome-user">Welcome, User!</span>
   <button type="button" class="btn btn-secondary btn-sm" id="change-name">
     Change Name
   </button>
@@ -99,10 +103,8 @@ $(`#welcome-area`).on(`click`, "#confirm-name-change", (event) => {
     error: (error) => {
       console.log({error})
     }
-  })
-
-
-  
+  });
+  updateHeaders();
 })
 
 $(`#logout`).click(`click`, (event) => {
